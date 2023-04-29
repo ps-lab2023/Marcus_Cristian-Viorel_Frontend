@@ -1,0 +1,151 @@
+<h3 class="text-center">Manage rooms</h3>
+
+<div class="box">
+  <h2 class="text-center mb-3">List of current rooms</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table class="table custom-table table-bordered text-center mx-auto">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Door no.</th>
+            <th>Room Type ID</th>
+            <th>Name</th>
+            <th>Cost/night</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let room of rooms">
+            <td>{{ room.id }}</td>
+            <td>{{ room.number }}</td>
+            <td>{{ room.roomTypeId }}</td>
+            <td>{{ room.name }}</td>
+            <td>${{ room.cost}}</td>
+            <td>{{ room.description}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3" (click)="sortByPrice()">Sort/unsort by room price</button>
+
+    <div class="col-md-6">
+      <h2 class="text-center mb-3">List of room types</h2>
+      <div class="table-responsive">
+        <table class="table custom-table table-bordered text-center mx-auto">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let roomType of roomTypes">
+            <td>{{ roomType.id }}</td>
+            <td>{{ roomType.name }}</td>
+            <td>${{ roomType.cost }}</td>
+            <td>{{ roomType.description }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+  </div>
+</div>
+
+
+
+<!--<div class="box">
+  <h2 class="text-center mb-3">List of current rooms</h2>
+  <div class="table-responsive">
+    <table class="table custom-table table-bordered text-center mx-auto">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Door no.</th>
+        &lt;!&ndash;<th>Room type ID</th>&ndash;&gt;
+        <th>Name</th>
+        <th>Cost/night</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let room of rooms">
+        <td>{{ room.id }}</td>
+        <td>{{ room.number }}</td>
+&lt;!&ndash;        <td>{{ room.roomTypeId }}</td>&ndash;&gt;
+        <td>{{ room.name }}</td>
+        <td>${{ room.cost}}</td>
+        <td>{{ room.description}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+  </div>
+</div>-->
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Delete room</h2>
+  <form (ngSubmit)="removeRoom()" #removeRoomForm="ngForm">
+    <div class="form-group text-center">
+      <label for="id" class="d-block mb-2">Insert ID</label>
+      <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
+    </div>
+    <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
+  </form>
+</div>
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Add room</h2>
+  <form (ngSubmit)="addRoom()" #addRoomForm="ngForm">
+
+    <div class="form-group text-center">
+      <label for="number" class="d-block mb-2">Insert door no.</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="number" name="number" [(ngModel)]="selectedRoomNumber" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="number" class="d-block mb-2">Insert room type ID</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="roomTypeId" name="roomTypeId" [(ngModel)]="selectedRoomTypeId" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Add</button>
+  </form>
+</div>
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Modify room</h2>
+  <form (ngSubmit)="modifyRoom()" #modifyRoomForm="ngForm">
+    <div class="form-group text-center">
+      <label for="id" class="d-block mb-2">Insert ID</label>
+      <input type="text" class="form-control d-block mx-auto" id="crtid" name="crtid" [(ngModel)]="selectedRoomId" (ngModelChange)="fetchRoomData()" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="number" class="d-block mb-2">Insert new door no.</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="changed_number" name="changed_number" [(ngModel)]="changedRoomNumberToModify" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="roomTypeId" class="d-block mb-2">Insert new room type ID</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="changed_roomTypeId" name="changed_roomTypeId" [(ngModel)]="changedRoomTypeIdToModify" required>
+    </div>
+
+    <h2 class="warning-text">Tip: you may create/update room types first if you want to modify pricing and others. See the Admin Dashboard.</h2>
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
+  </form>
+</div>
+
+
+

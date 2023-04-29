@@ -1,0 +1,94 @@
+#chosenUsername, #chosenPassword {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  width: 88%;
+  box-sizing: border-box;
+}
+
+#snackbar {
+  bottom: 50px;
+  top: unset;
+}
+
+#chosenIsAdmin {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.warning-text {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.box form .form-group label {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.box form .form-group input {
+  display: block;
+  margin: 0 auto;
+  width: 8%;
+  text-align: center;
+}
+
+.box form .form-group {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.box {
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 1250px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background-color: #fff;
+}
+
+.btn {
+  display: block;
+  width: auto;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 43%;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+  color: #0074D9;
+  margin-bottom: 2rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: black;
+  margin-bottom: 2rem;
+  font-family: 'Open Sans', sans-serif;
+}

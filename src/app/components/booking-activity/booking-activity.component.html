@@ -1,0 +1,115 @@
+<h3 class="text-center">Manage bookings</h3>
+
+<div class="box">
+  <h2 class="text-center mb-3">List of current bookings</h2>
+  <div class="table-responsive">
+    <table class="table custom-table table-bordered text-center mx-auto">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Check-In Date</th>
+        <th>Check-Out Date</th>
+        <th>Total</th>
+        <th>Is Paid</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.id }}</td>
+        <td>{{ booking.checkInDate }}</td>
+        <td>{{ booking.checkOutDate }}</td>
+        <td>${{ booking.total }}</td>
+        <td>{{ booking.isPaid ? 'Yes' : 'No' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center">
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+    <button type="button" class="btn btn-secondary" (click)="filterUnpaid()">Filter/unfilter by unpaid</button>
+<!--    <button type="button" class="btn btn-secondary" (click)="filterPaid()">Filter by paid</button>-->
+  </div>
+</div>
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Delete booking</h2>
+  <form (ngSubmit)="removeBooking()" #removeBookingForm="ngForm">
+    <div class="form-group text-center">
+      <label for="id" class="d-block mb-2">Insert ID</label>
+      <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
+    </div>
+    <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
+  </form>
+</div>
+
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Add booking</h2>
+  <form (ngSubmit)="addBooking()" #addBookingForm="ngForm">
+
+    <div class="form-group text-center">
+      <label for="checkInDate" class="d-block mb-2">Insert check-in date</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="checkInDate" name="checkInDate" [(ngModel)]="selectedCheckInDate" required placeholder="YYYY-MM-DD">
+    </div>
+
+    <div class="form-group text-center">
+      <label for="checkOutDate" class="d-block mb-2">Insert check-out date</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="checkOutDate" name="checkOutDate" [(ngModel)]="selectedCheckOutDate" required placeholder="YYYY-MM-DD">
+    </div>
+
+    <div class="form-group text-center">
+      <label for="total" class="d-block mb-2">Insert total ($)</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="total" name="total" [(ngModel)]="selectedTotal" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="isPaid" class="d-block mb-2">Is Paid</label>
+      <select class="form-control d-inline-block mx-auto" id="isPaid" name="isPaid" [(ngModel)]="selectedIsPaid" required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Add</button>
+  </form>
+</div>
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Modify booking</h2>
+  <form (ngSubmit)="modifyBooking()" #modifyBookingForm="ngForm">
+    <div class="form-group text-center">
+      <label for="bookingId" class="d-block mb-2">Insert ID</label>
+      <input type="text" class="form-control d-block mx-auto" id="bookingId" name="bookingId" [(ngModel)]="selectedBookingId" (ngModelChange)="fetchBookingData()" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="changedCheckInDate" class="d-block mb-2">Insert new check-in date</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckInDate" name="changedCheckInDate" [(ngModel)]="changedCheckInDate" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="changedCheckOutDate" class="d-block mb-2">Insert new check-out date</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckOutDate" name="changedCheckOutDate" [(ngModel)]="changedCheckOutDate" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="changedTotal" class="d-block mb-2">Insert new total ($)</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="changedTotal" name="changedTotal" [(ngModel)]="changedTotal" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="changedIsPaid" class="d-block mb-2">Insert new Is Paid</label>
+      <select class="form-control d-inline-block mx-auto" id="changedIsPaid" name="changedIsPaid" [(ngModel)]="changedIsPaid" required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
+  </form>
+</div>
+
+
+

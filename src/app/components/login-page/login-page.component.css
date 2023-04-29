@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+#snackbar {
+  bottom: 50px;
+  top: unset;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  flex-direction: column;
+}
+
+.box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 30rem;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.header {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+  color: #0074D9;
+  margin-bottom: 2rem;
+}
+
+.logintext {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+
+.login-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 30rem;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-field label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-field input[type="text"],
+.form-field input[type="password"] {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-field input[type="text"]:focus,
+.form-field input[type="password"]:focus {
+  outline: none;
+  border-color: #0074D9;
+  box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
+}
+
+.show-password {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.show-password label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.show-password input {
+  margin-right: 0.5rem;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.submit-button:hover {
+  background-color: #0063aa;
+}

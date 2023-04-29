@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotel Reservation System</title>
+</head>
+<body>
+<div class="header">Hotel Reservation System</div>
+
+<div class="container">
+  <div class="login-box">
+    <div class="logintext">
+      <h3>Login</h3>
+    </div>
+    <div class="snackbar-container"></div>
+    <form [formGroup]="loginForm">
+      <div class="form-container">
+        <div class="form-field" [class.invalid]="loginForm.controls['name'].invalid && (loginForm.controls['name'].dirty || loginForm.controls['name'].touched)">
+          <label for="user">Username</label>
+          <input
+            type="text"
+            id="user"
+            class="login-input"
+            formControlName="name"
+            name="name"
+          />
+        </div>
+        <div class="form-field" [class.invalid]="loginForm.controls['pass'].invalid && (loginForm.controls['pass'].dirty || loginForm.controls['pass'].touched)">
+          <label for="pass">Password</label>
+          <input
+            type="{{ passwordFieldType }}"
+            id="pass"
+            class="login-input"
+            formControlName="pass"
+            name="pass"
+          />
+        </div>
+        <div class="form-field show-password">
+          <div>
+            <input
+              type="checkbox"
+              id="show-password"
+              (change)="onShowPasswordChange($event)"
+            />
+            <label for="show-password">Show password</label>
+          </div>
+        </div>
+        <button type="submit" class="submit-button" (click)="onSubmit()">Log In</button>
+        <button type="submit" class="submit-button" (click)="register()">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

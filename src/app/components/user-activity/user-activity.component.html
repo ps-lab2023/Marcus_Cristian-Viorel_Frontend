@@ -1,0 +1,40 @@
+<h3 class="text-center">Manage users</h3>
+
+<div class="box">
+  <h2 class="text-center mb-3">List of enrolled users</h2>
+  <div class="table-responsive">
+    <table class="table custom-table table-bordered text-center mx-auto">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Is Admin?</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.pass }}</td>
+        <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+  </div>
+</div>
+
+<div class="box mt-5">
+  <h2 class="text-center mb-3">Delete user</h2>
+  <form (ngSubmit)="removeUser()" #removeUserForm="ngForm">
+    <div class="form-group text-center">
+      <label for="id" class="d-block mb-2">Insert ID</label>
+      <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
+    </div>
+    <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
+    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
+  </form>
+</div>

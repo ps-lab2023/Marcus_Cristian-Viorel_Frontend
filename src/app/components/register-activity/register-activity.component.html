@@ -1,0 +1,30 @@
+<h3 class="text-center">Register</h3>
+
+<div class="constainer">
+<div class="box mt-5">
+  <div class="snackbar-container"></div>
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <div class="form-group text-center">
+      <label for="chosenUsername" class="d-block mb-2">Insert username (unique)</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="chosenUsername" name="chosenUsername" [(ngModel)]="chosenUsername" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="chosenPassword" class="d-block mb-2">Insert password</label>
+      <input type="text" class="form-control d-inline-block mx-auto" id="chosenPassword" name="chosenPassword" [(ngModel)]="chosenPassword" required>
+    </div>
+
+    <div class="form-group text-center">
+      <label for="chosenIsAdmin" class="d-block mb-2">Insert priviledge type</label>
+      <select class="form-control d-inline-block mx-auto" id="chosenIsAdmin" name="chosenIsAdmin" [(ngModel)]="chosenIsAdmin" required>
+        <option>Admin</option>
+        <option>Regular user</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+    <button type="button" class="btn btn-secondary" (click)="register()">Submit</button>
+  </form>
+</div>
+</div>
+
