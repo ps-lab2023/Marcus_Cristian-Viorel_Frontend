@@ -6,32 +6,11 @@
   margin: 0 auto;
 }
 
-.custom-table th, .custom-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  white-space: nowrap;
-}
-
-.custom-table th {
-  background-color: #f2f2f2;
-  color: #333;
-  text-align: left;
-}
-
 .warning-text {
   color: red;
   font-size: 14px;
   font-weight: 600;
   font-style: italic;
-}
-
-#number, #roomTypeId{
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 28%;
-  box-sizing: border-box;
 }
 
 .box form .form-group label {
@@ -46,18 +25,16 @@
   display: block;
   margin: 0 auto;
   width: 8%;
-  text-align: center;
 }
 
 .box form .form-group {
-  display: inline-block;
   margin-bottom: 20px;
 }
 
 .box {
   margin: 50px auto;
   padding: 20px;
-  max-width: 1900px;
+  max-width: 1000px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -75,8 +52,8 @@
   font-weight: 600;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  margin-top: 1rem;
-  margin-left: 43%;
+  /*  margin-top: 1rem;*/
+  margin-left: 0%;
 }
 
 .btn1 {
@@ -90,22 +67,8 @@
   font-weight: 600;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  margin-left: 0%;
-}
-
-#roomType, #selectedRoomType {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 100%;
-  margin-right: 0%;
-  box-sizing: border-box;
-}
-
-.form-control {
-  margin-right: 0%;
-  margin-left: 0%;
+  margin-top: 1rem;
+  margin-left: 42%;
 }
 
 .btn2 {
@@ -119,17 +82,8 @@
   font-weight: 600;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  margin-left: 48%;
-}
-
-#changed_number {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 45%;
-  box-sizing: border-box;
-  margin-left: 0%;
+  margin-top: 1rem;
+  margin-left: 46%;
 }
 
 h3 {
@@ -150,4 +104,15 @@ h2 {
   color: black;
   margin-bottom: 2rem;
   font-family: 'Open Sans', sans-serif;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.custom-table th {
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: left;
 }

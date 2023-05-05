@@ -1,61 +1,79 @@
-<div class="container">
-  <h1 class="text-center mt-5 mb-4">Welcome back, {{ username }}!</h1>
-  <h2 class="text-center mt-5 mb-4">Today is {{ date }}</h2>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Buttons</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Bootstrap JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-    <div class="col mb-4">
+<h1 class="text-center mt-5 mb-4">Welcome back, {{ username }}!</h1>
+<h2 class="text-center mt-5 mb-4">Today is {{ date }}</h2>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
-          <p class="card-text">View and manage all registered admins/employees.</p>
+          <h5 class="card-title">Manage Users</h5>
+          <p class="card-text">View and manage all registered users.</p>
           <button class="btn btn-primary w-100" (click)="userActivity()">Users</button>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6 col-lg-3 mb-4">
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
+          <h5 class="card-title">Manage Rooms</h5>
           <p class="card-text">View and manage all hotel rooms.</p>
           <button class="btn btn-primary w-100" (click)="roomActivity()">Rooms</button>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6 col-lg-3 mb-4">
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
+          <h5 class="card-title">Manage Room Types</h5>
           <p class="card-text">View and manage all room types.</p>
           <button class="btn btn-primary w-100" (click)="roomTypeActivity()">Room Types</button>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6 col-lg-3 mb-4">
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
-          <p class="card-text">View and manage all past and current guests.</p>
+          <h5 class="card-title">Manage Guests</h5>
+          <p class="card-text">View and manage all hotel guests.</p>
           <button class="btn btn-primary w-100" (click)="guestActivity()">Hotel Guests</button>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6 col-lg-3 mb-4">
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
+          <h5 class="card-title">Manage Bookings</h5>
           <p class="card-text">View and manage all bookings.</p>
           <button class="btn btn-primary w-100" (click)="bookingActivity()">Bookings</button>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6 col-lg-3 mb-4">
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
-          <p class="card-text">View and change own login credentials.</p>
-          <button class="btn btn-primary w-100" (click)="credentialsActivity()">Change credentials</button>
+          <h5 class="card-title">Change Credentials</h5>
+          <p class="card-text">Change your username and password.</p>
+          <button class="btn btn-primary w-100" (click)="credentialsActivity()">Credentials</button>
         </div>
       </div>
     </div>
 
   </div>
 </div>
+

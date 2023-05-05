@@ -12,9 +12,6 @@ import {LoginService} from "../../service/login.service";
 export class BookingActivityComponent {
   bookings: Booking[] = [];
 
-  // delete booking
-  chosenId: any;
-
   // add booking
   selectedCheckInDate: any;
   selectedCheckOutDate: any;
@@ -22,7 +19,6 @@ export class BookingActivityComponent {
   selectedIsPaid: any;
 
   // modify booking
-  selectedBookingId: any;
   changedCheckInDate: any;
   changedCheckOutDate: any;
   changedTotal: any;
@@ -59,9 +55,9 @@ export class BookingActivityComponent {
     window.history.back();
   }
 
-  removeBooking() {
+  removeBooking(id: any) {
     console.log("removeBooking() in BookingActivityComponent");
-    this.bookingService.removeBooking(this.chosenId).subscribe(
+    this.bookingService.removeBooking(id).subscribe(
       () => {
         console.log("Booking removed");
         this.ngOnInit();
@@ -71,22 +67,6 @@ export class BookingActivityComponent {
   addBooking() {
     console.log("addBooking() in BookingActivityComponent");
     let newBooking = new Booking();
-
-/*    // year will be the first 4 chars of the string
-    let year = this.selectedCheckInDate.substring(0, 4);
-    // month will be the 6th and 7th chars of the string
-    let month = this.selectedCheckInDate.substring(5, 6);
-    // day will be the 9th and 10th chars of the string
-    let day = this.selectedCheckInDate.substring(7, 9);
-    newBooking.checkInDate = new Date(year, month, day);
-
-    // year will be the first 4 chars of the string
-    year = this.selectedCheckInDate.substring(0, 4);
-    // month will be the 6th and 7th chars of the string
-    month = this.selectedCheckInDate.substring(5, 6);
-    // day will be the 9th and 10th chars of the string
-    day = this.selectedCheckInDate.substring(7, 9);
-    newBooking.checkOutDate = new Date(year, month, day);*/
 
     newBooking.checkInDate = this.selectedCheckInDate;
     newBooking.checkOutDate = this.selectedCheckOutDate;
@@ -101,44 +81,13 @@ export class BookingActivityComponent {
       });
   }
 
-  modifyBooking() {
+  modifyBooking(id: any) {
     console.log("modifyBooking() in BookingActivityComponent");
-
-    if(this.selectedBookingId == null || this.selectedBookingId == "") {
-      return;
-    } else {
-      this.bookingService.updateBooking(this.selectedBookingId, this.changedCheckInDate, this.changedCheckOutDate, this.changedTotal, this.changedIsPaid).subscribe(
+    this.bookingService.updateBooking(id, this.changedCheckInDate, this.changedCheckOutDate, this.changedTotal, this.changedIsPaid).subscribe(
         () => {
           console.log("Booking modified");
           this.ngOnInit();
         });
-    }
-  }
-
-  fetchBookingData() {
-    console.log("fetchBookingData() in BookingActivityComponent");
-    let fetchedBooking = this.findBookingById(this.selectedBookingId);
-
-    if(fetchedBooking != null) {
-      this.changedCheckInDate = fetchedBooking.checkInDate;
-      this.changedCheckOutDate = fetchedBooking.checkOutDate;
-      this.changedTotal = fetchedBooking.total;
-      this.changedIsPaid = fetchedBooking.isPaid;
-    } else {
-      this.changedCheckInDate = null;
-      this.changedCheckOutDate = null;
-      this.changedTotal = null;
-      this.changedIsPaid = null;
-    }
-  }
-
-  findBookingById(id: any) {
-    for(let booking of this.bookings) {
-      if(booking.id == id) {
-        return booking;
-      }
-    }
-    return null;
   }
 
   filterUnpaid() {

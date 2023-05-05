@@ -15,6 +15,20 @@
   box-sizing: border-box;
 }
 
+.btn1 {
+  display: block;
+  width: auto;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 0%;
+}
+
 #id {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
@@ -43,22 +57,28 @@
   font-style: italic;
 }
 
-#sel_id {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 28%;
-  box-sizing: border-box;
-}
-
 #name, #changed_name {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1.2rem;
-  width: 48%;
+  width: 100%;
   box-sizing: border-box;
+}
+
+.btn2 {
+  display: block;
+  width: auto;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 48%;
 }
 
 #cost, #changed_cost {
@@ -75,7 +95,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1.2rem;
-  width: 150%;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -102,26 +122,11 @@
 .box {
   margin: 50px auto;
   padding: 20px;
-  max-width: 750px;
+  max-width: 1900px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   background-color: #fff;
-}
-
-.btn {
-  display: block;
-  width: auto;
-  background-color: #0074D9;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-  margin-left: 43%;
 }
 
 h3 {

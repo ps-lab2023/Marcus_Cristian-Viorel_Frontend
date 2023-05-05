@@ -3,4 +3,5 @@ export class User {
   name: string | undefined;
   pass: string | undefined;
   isAdmin: any | undefined;
+  lastLogin: Date | undefined;
 }

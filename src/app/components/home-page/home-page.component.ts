@@ -1,35 +1,31 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
-import {RoomMergedWithRoomType} from "../../model/RoomMergedWithRoomType";
 import {RoomService} from "../../service/room.service";
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
+
 export class HomePageComponent {
   username: string = "";
   date: string = new Date().toLocaleString('en-us', {weekday: 'long', day: 'numeric', month: 'long'});
 
-  // list all rooms-merged-roomtypes
-  rooms: RoomMergedWithRoomType[] = [];
+  // websocket
+  stock: any = {};
+
+  private webSocket: WebSocket;
 
   constructor(private router: Router,
-              private loginService: LoginService,
-              private roomService: RoomService) {
+              private loginService: LoginService) {
+
     this.username = this.loginService.getUsername();
-  }
 
-  ngOnInit(): void {
-    console.log("ngOnInit() in HomePageComponent");
-    this.roomService.getRooms().subscribe(rooms => {
-      this.rooms = rooms;
-
-      // print the length of the rooms fetched
-      console.log("rooms.length: " + this.rooms.length);
-    });
+    this.webSocket = new WebSocket('ws://localhost:8082/stocks');
+    this.webSocket.onmessage = (event) => {
+      this.stock = JSON.parse(event.data);
+    }
   }
 
   credentialsActivity() {
@@ -42,5 +38,9 @@ export class HomePageComponent {
 
   guestActivity() {
     this.router.navigate(['/guest-activity']);
+  }
+
+  vacantRoomsActivity() {
+    this.router.navigate(['/vacant-rooms-activity']);
   }
 }

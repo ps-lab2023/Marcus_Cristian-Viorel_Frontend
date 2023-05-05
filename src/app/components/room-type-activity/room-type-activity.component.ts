@@ -11,17 +11,12 @@ export class RoomTypeActivityComponent {
   // list all available roomTypes
   roomTypes: RoomType[] = [];
 
-  // remove roomType
-  chosenId: any;
-
   // add new roomType
-/*  selectedId: any;*/
   selectedName: any;
   selectedCost: any;
   selectedDescription: any;
 
   // modify roomType
-  selectedRoomTypeId: any;
   changedRoomTypeNameToModify: any;
   changedRoomTypeCostToModify: any;
   changedRoomTypeDescriptionToModify: any;
@@ -43,9 +38,9 @@ export class RoomTypeActivityComponent {
     window.history.back();
   }
 
-  removeRoomType(): void {
+  removeRoomType(id: any): void {
     console.log("removeRoomType() in RoomTypeActivityComponent");
-    this.roomTypeService.removeRoomType(this.chosenId).subscribe(
+    this.roomTypeService.removeRoomType(id).subscribe(
       () => {
         console.log("RoomType removed");
         this.ngOnInit();
@@ -72,21 +67,17 @@ export class RoomTypeActivityComponent {
     }
   }
 
-  modifyRoomType() {
+  modifyRoomType(id: any) {
     console.log("modifyRoomType() in RoomTypeActivityComponent");
 
-    if(this.selectedRoomTypeId == null || this.selectedRoomTypeId == "") {
-      return;
-    } else {
-      this.roomTypeService.updateRoomType(this.selectedRoomTypeId, this.changedRoomTypeNameToModify, this.changedRoomTypeCostToModify, this.changedRoomTypeDescriptionToModify).subscribe(
+    this.roomTypeService.updateRoomType(id, this.changedRoomTypeNameToModify, this.changedRoomTypeCostToModify, this.changedRoomTypeDescriptionToModify).subscribe(
         () => {
           console.log("RoomType modified");
           this.ngOnInit();
         });
-    }
   }
 
-  fetchRoomTypeData() {
+/*  fetchRoomTypeData() {
     console.log("fetchRoomTypeData() in RoomTypeActivityComponent");
     let fetchedRoomType = this.findRoomTypeById(this.selectedRoomTypeId);
 
@@ -99,7 +90,7 @@ export class RoomTypeActivityComponent {
       this.changedRoomTypeCostToModify = "";
       this.changedRoomTypeDescriptionToModify = "";
     }
-  }
+  }*/
 
   findRoomTypeById(id: any): any {
     console.log("findRoomTypeById() in RoomTypeActivityComponent");

@@ -1,4 +1,7 @@
-<h3 class="text-center">Manage bookings</h3>
+<div class="box">
+  <h3 class="text-center">Manage bookings</h3>
+  <button type="button" class="btn2 btn-secondary" (click)="goBack()">Back</button>
+</div>
 
 <div class="box">
   <h2 class="text-center mb-3">List of current bookings</h2>
@@ -11,6 +14,12 @@
         <th>Check-Out Date</th>
         <th>Total</th>
         <th>Is Paid</th>
+        <th></th>
+        <th>New Check-In</th>
+        <th>New Check-Out</th>
+        <th>New Total</th>
+        <th>New Is Paid</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -20,30 +29,42 @@
         <td>{{ booking.checkOutDate }}</td>
         <td>${{ booking.total }}</td>
         <td>{{ booking.isPaid ? 'Yes' : 'No' }}</td>
+
+        <td>
+          <button type="button" class="btn1 btn-danger" (click)="removeBooking(booking.id)">Remove</button>
+        </td>
+
+        <td>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckInDate" name="changedCheckInDate" [(ngModel)]="changedCheckInDate" required placeholder="YYYY-MM-DD">
+        </td>
+
+        <td>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckOutDate" name="changedCheckOutDate" [(ngModel)]="changedCheckOutDate" required placeholder="YYYY-MM-DD">
+        </td>
+
+        <td>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changedTotal" name="changedTotal" [(ngModel)]="changedTotal" required>
+        </td>
+
+        <td>
+          <select class="form-control d-inline-block mx-auto" id="changedIsPaid" name="changedIsPaid" [(ngModel)]="changedIsPaid" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </td>
+
+        <td>
+          <button type="button" class="btn1 btn-primary" (click)="modifyBooking(booking.id)">Modify</button>
+        </td>
+
       </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="text-center">
-    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
-    <button type="button" class="btn btn-secondary" (click)="filterUnpaid()">Filter/unfilter by unpaid</button>
-<!--    <button type="button" class="btn btn-secondary" (click)="filterPaid()">Filter by paid</button>-->
-  </div>
-</div>
+  <button type="button" class="btn btn-secondary" (click)="filterUnpaid()">Filter/unfilter by unpaid</button>
 
-<div class="box mt-5">
-  <h2 class="text-center mb-3">Delete booking</h2>
-  <form (ngSubmit)="removeBooking()" #removeBookingForm="ngForm">
-    <div class="form-group text-center">
-      <label for="id" class="d-block mb-2">Insert ID</label>
-      <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
-    </div>
-    <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
-  </form>
 </div>
-
 
 <div class="box mt-5">
   <h2 class="text-center mb-3">Add booking</h2>
@@ -72,11 +93,11 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Add</button>
+    <button type="submit" class="btn2 btn-primary d-block mx-auto mt-3">Add</button>
   </form>
 </div>
 
-<div class="box mt-5">
+<!--<div class="box mt-5">
   <h2 class="text-center mb-3">Modify booking</h2>
   <form (ngSubmit)="modifyBooking()" #modifyBookingForm="ngForm">
     <div class="form-group text-center">
@@ -109,7 +130,7 @@
 
     <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
   </form>
-</div>
+</div>-->
 
 
 

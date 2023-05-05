@@ -23,6 +23,7 @@ import { LogInterceptor} from "./log.interceptor";
 import { BookingActivityComponent } from './components/booking-activity/booking-activity.component';
 import { CredentialsActivityComponent } from './components/credentials-activity/credentials-activity.component';
 import { RegisterActivityComponent } from './components/register-activity/register-activity.component';
+import { VacantRoomsActivityComponent } from './components/vacant-rooms-activity/vacant-rooms-activity.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RegisterActivityComponent } from './components/register-activity/regist
     BookingActivityComponent,
     CredentialsActivityComponent,
     RegisterActivityComponent,
+    VacantRoomsActivityComponent,
   ],
   imports: [
     BrowserModule,

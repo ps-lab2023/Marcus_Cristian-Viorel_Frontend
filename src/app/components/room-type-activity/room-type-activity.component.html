@@ -1,4 +1,7 @@
-<h3 class="text-center">Manage room types</h3>
+<div class="box">
+  <h3 class="text-center">Manage room types</h3>
+  <button type="button" class="btn2 btn-secondary" (click)="goBack()">Back</button>
+</div>
 
 <div class="box">
   <h2 class="text-center mb-3">List of current room types</h2>
@@ -10,6 +13,11 @@
         <th>Name</th>
         <th>Cost/night</th>
         <th>Description</th>
+        <th></th>
+        <th>New name</th>
+        <th>New cost/night</th>
+        <th>New description</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -18,16 +26,34 @@
         <td>{{ roomType.name }}</td>
         <td>${{ roomType.cost}}</td>
         <td>{{ roomType.description}}</td>
+
+        <td>
+          <button type="button" class="btn1 btn-danger" (click)="removeRoomType(roomType.id)">Delete</button>
+        </td>
+
+        <td>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changed_name" name="changed_name" [(ngModel)]="changedRoomTypeNameToModify" required>
+        </td>
+
+        <td>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changed_cost" name="changed_cost" [(ngModel)]="changedRoomTypeCostToModify" required>
+        </td>
+
+        <td>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changed_description" name="changed_description" [(ngModel)]="changedRoomTypeDescriptionToModify" required>
+        </td>
+
+        <td>
+          <button type="button" class="btn1 btn-primary" (click)="modifyRoomType(roomType.id)">Modify</button>
+        </td>
+
       </tr>
       </tbody>
     </table>
   </div>
-  <div class="text-center">
-    <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
-  </div>
 </div>
 
-<div class="box mt-5">
+<!--<div class="box mt-5">
   <h2 class="text-center mb-3">Delete room type</h2>
   <form (ngSubmit)="removeRoomType()" #removeRoomTypeForm="ngForm">
     <div class="form-group text-center">
@@ -37,7 +63,7 @@
     <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
     <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
   </form>
-</div>
+</div>-->
 
 <div class="box mt-5">
   <h2 class="text-center mb-3">Add room type</h2>
@@ -59,11 +85,11 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Add</button>
+    <button type="submit" class="btn2 btn-primary d-block mx-auto mt-3">Add</button>
   </form>
 </div>
 
-<div class="box mt-5">
+<!--<div class="box mt-5">
   <h2 class="text-center mb-3">Modify room type</h2>
   <form (ngSubmit)="modifyRoomType()" #modifyRoomTypeForm="ngForm">
     <div class="form-group text-center">
@@ -89,6 +115,6 @@
     <h2 class="warning-text">Warning! Operation will affect all current rooms' pricing and others.</h2>
     <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
   </form>
-</div>
+</div>-->
 
 

@@ -21,9 +21,6 @@ export class GuestActivityComponent {
   rooms: RoomMergedWithRoomType[] = []
   bookings: Booking[] = [];
 
-  // remove guest
-  chosenId: any;
-
   // add new guest
   selectedBookingId: any;
   selectedRoomId: any;
@@ -55,7 +52,6 @@ export class GuestActivityComponent {
     });
 
 
-
     this.bookingService.getBookings().subscribe(bookings => {
       this.bookings = bookings;
       // tidy the booking dates to show friendly format
@@ -78,9 +74,9 @@ export class GuestActivityComponent {
     window.history.back();
   }
 
-  removeGuest() {
+  removeGuest(id: any) {
     console.log("removeGuest() in GuestActivityComponent");
-    this.guestService.removeGuest(this.chosenId).subscribe(
+    this.guestService.removeGuest(id).subscribe(
       () => {
         console.log("Guest removed");
         this.ngOnInit();

@@ -40,4 +40,9 @@ export class RoomService {
     console.log("getRoomById() in RoomService");
     return this.httpClient.get<Room>(this.baseUrl + '/findById/' + selectedRoomId);
   }
+
+  getVacantRooms(): Observable<RoomMergedWithRoomType[]> {
+    console.log("getVacantRooms() in RoomService");
+    return this.httpClient.get<RoomMergedWithRoomType[]>(this.baseUrl + '/findAllVacantWithRoomTypes');
+  }
 }

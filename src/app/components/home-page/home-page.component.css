@@ -1,119 +1,102 @@
-.custom-table {
-  font-size: 18px;
-  border: 2px solid #ddd;
-  border-collapse: collapse;
-  font-family: 'Open Sans', sans-serif;
-  margin: 0 auto;
+.icon_stock {
+  margin-top: 3px;
+  margin-left: 2px;
+  max-width: 43px;
+  max-height: 43px;
 }
 
-#total, #changedTotal {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 48%;
-  box-sizing: border-box;
-}
-
-#isPaid, #changedIsPaid {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
+.card_stock {
   width: 100%;
-  box-sizing: border-box;
+  max-width: 310px;
+  height: 70px;
+  background: white;
+  border-radius: 20px;
+  border-color: #353535;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
 }
 
-#checkInDate, #checkOutDate, #changedCheckInDate, #changedCheckOutDate {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 58%;
-  box-sizing: border-box;
+.card_stock:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
-.custom-table th, .custom-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  white-space: nowrap;
+.img_stock {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background: linear-gradient(#d7cfcf, #0074D9);
 }
 
-.custom-table th {
-  background-color: #f2f2f2;
-  color: #333;
-  text-align: left;
+.card_stock :hover>.img_stock {
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(#9198e5, #712020);
 }
 
-.warning-text {
-  color: red;
-  font-size: 14px;
-  font-weight: 600;
-  font-style: italic;
+.textBox_stock {
+  width: calc(100% - 90px);
+  margin-left: 10px;
+  color: black;
+  font-family: 'Poppins', sans-serif;
 }
 
-#id, #bookingId {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 28%;
-  box-sizing: border-box;
+.textContent_stock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#id:focus {
-  outline: none;
-  border-color: #0074D9;
-  box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
+.span_stock {
+  font-size: 10px;
 }
 
-.box form .form-group label {
-  display: block;
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: 10px;
-  font-family: 'Open Sans', sans-serif;
+.h1_stock {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-left: 10px;
 }
 
-.box form .form-group input {
-  display: block;
-  margin: 0 auto;
-  width: 8%;
-  text-align: center;
+.detail_stock {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: lighter;
 }
 
-.box form .form-group {
-  display: inline-block;
-  margin-bottom: 20px;
+
+
+.container {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.col {
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  padding: 15px;
 }
 
 .box {
-  margin: 50px auto;
-  padding: 20px;
-  max-width: 450px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  background-color: #fff;
+  padding: 15px;
+  text-align: center;
+  height: 200px;
 }
 
-.btn {
-  display: block;
-  width: 50%;
-  background-color: #0074D9;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-  margin-left: 26%;
-}
-
-h3 {
-  font-size: 2rem;
+h1 {
+  font-size: 5rem;
   font-weight: 700;
   text-align: center;
   margin-top: 2rem;
@@ -132,12 +115,16 @@ h2 {
   font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  text-align: center;
-  margin-top: 2rem;
-  color: #0074D9;
-  margin-bottom: 2rem;
-  font-family: 'Open Sans', sans-serif;
+.btn {
+  display: block;
+  width: auto;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
 }

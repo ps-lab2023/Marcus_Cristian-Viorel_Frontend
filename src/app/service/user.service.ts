@@ -37,4 +37,9 @@ export class UserService {
     console.log("addUser() in UserService");
     return this.httpClient.put<User>(this.baseUrl + '/add', newUser);
   }
+
+  sendMessage(message: string): Observable<any> {
+    console.log("sendMessages() in UserService");
+    return this.httpClient.put(this.baseUrl + '/sendMessage', message);
+  }
 }

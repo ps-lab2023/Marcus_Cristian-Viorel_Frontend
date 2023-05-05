@@ -1,216 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Buttons</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Bootstrap JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<h1 class="text-center mt-5 mb-4">Welcome back, {{ username }}!</h1>
+<h2 class="text-center mt-5 mb-4">Today is {{ date }}</h2>
+
 <div class="container">
-  <h1 class="text-center mt-5 mb-4">Welcome back, {{ username }}!</h1>
-  <h2 class="text-center mt-5 mb-4">Today is {{ date }}</h2>
-
-<!--  <div class="box mt-5">
-    <h2 class="text-center mb-3">Current hotel rooms</h2>
-
-    <div class="table-responsive">
-      <table class="table custom-table table-bordered text-center mx-auto">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Door no.</th>
-&lt;!&ndash;          <th>Room Type ID</th>&ndash;&gt;
-          <th>Name</th>
-          <th>Cost/night</th>
-          <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let room of rooms">
-          <td>{{ room.id }}</td>
-          <td>{{ room.number }}</td>
-&lt;!&ndash;          <td>{{ room.roomTypeId }}</td>&ndash;&gt;
-          <td>{{ room.name }}</td>
-          <td>${{ room.cost}}</td>
-          <td>{{ room.description}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>-->
-<!--  <div class="col-md-6 col-lg-3 mb-4">
-    <div class="card h-100">
-      <div class="card-body">
-
-          <p class="card-text">Current hotel rooms.</p>
-
-          <div class="table-responsive">
-            <table class="table custom-table table-bordered text-center mx-auto">
-              <thead>
-              <tr>
-                <th>ID</th>
-                <th>Door no.</th>
-                <th>Room Type ID</th>
-                <th>Name</th>
-                <th>Cost/night</th>
-                <th>Description</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let room of rooms">
-                <td>{{ room.id }}</td>
-                <td>{{ room.number }}</td>
-                <td>{{ room.roomTypeId }}</td>
-                <td>{{ room.name }}</td>
-                <td>${{ room.cost}}</td>
-                <td>{{ room.description}}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-  </div>-->
-
-<!--
-    <div class="col-md-6 col-lg-3 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <p class="card-text">View and manage all room types.</p>
-          <button class="btn btn-primary w-100" (click)="roomTypeActivity()">Room Types</button>
-        </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="card h-100">
+  <div class="card-body">
+<div class="card_stock" *ngIf="stock.name">
+  <div class="img_stock">
+    <img class="icon_stock" [src]="stock.icon" />
+  </div>
+  <div class="textBox_stock">
+    <div class="textContent_stock">
+      <div class="h1_stock">{{stock.name}}<div *ngIf="stock.increased"
+                                         style="color: green ; margin: 0 10px 0 10px; float: right;">▲</div>
+        <div *ngIf="!stock.increased" style="color: red ; margin: 0 10px 0 10px; float: right;">▼</div>
       </div>
     </div>
+    <div class="detail_stock">Is trading at the price of LEI{{stock.price}}
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+  </div>
+</div>
 
-    <div class="col-md-6 col-lg-3 mb-4">
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+
+    <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
-          <p class="card-text">View and manage all past and current guests.</p>
+          <h5 class="card-title">Manage Guests</h5>
+          <p class="card-text">View and manage all hotel guests.</p>
           <button class="btn btn-primary w-100" (click)="guestActivity()">Hotel Guests</button>
         </div>
       </div>
     </div>
-!-->
 
-  <div class="box mt-5">
-    <h2 class="text-center mb-3">Manage hotel guests</h2>
-    <button class="btn btn-primary w-100" (click)="guestActivity()">Hotel Guests</button>
-  </div>
-
-  <div class="box mt-5">
-    <h2 class="text-center mb-3">View and change bookings</h2>
-    <button class="btn btn-primary w-100" (click)="bookingActivity()">Bookings</button>
-  </div>
-
-  <!--<div class="box mt-5">
-    <div class="box">
-
-      <h2 class="text-center mb-3">List of current bookings</h2>
-
-      <div class="table-responsive">
-        <table class="table custom-table table-bordered text-center mx-auto">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Check-In Date</th>
-            <th>Check-Out Date</th>
-            <th>Total</th>
-            <th>Is Paid</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let booking of bookings">
-            <td>{{ booking.id }}</td>
-            <td>{{ booking.checkInDate }}</td>
-            <td>{{ booking.checkOutDate }}</td>
-            <td>${{ booking.total }}</td>
-            <td>{{ booking.isPaid ? 'Yes' : 'No' }}</td>
-          </tr>
-          </tbody>
-        </table>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Manage Vacant Rooms</h5>
+          <p class="card-text">View all unoccupied rooms.</p>
+          <button class="btn btn-primary w-100" (click)="vacantRoomsActivity()">Vacant Rooms</button>
+        </div>
       </div>
     </div>
 
-
-    <div class="box mt-5">
-      <h2 class="text-center mb-3">Delete booking</h2>
-      <form (ngSubmit)="removeBooking()" #removeBookingForm="ngForm">
-        <div class="form-group text-center">
-          <label for="id" class="d-block mb-2">Insert ID</label>
-          <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Manage Bookings</h5>
+          <p class="card-text">View and manage all bookings.</p>
+          <button class="btn btn-primary w-100" (click)="bookingActivity()">Bookings</button>
         </div>
-        <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
-        <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
-      </form>
+      </div>
     </div>
 
-
-    <div class="box mt-5">
-      <h2 class="text-center mb-3">Add booking</h2>
-      <form (ngSubmit)="addBooking()" #addBookingForm="ngForm">
-
-        <div class="form-group text-center">
-          <label for="checkInDate" class="d-block mb-2">Insert check-in date</label>
-          <input type="text" class="form-control d-inline-block mx-auto" id="checkInDate" name="checkInDate" [(ngModel)]="selectedCheckInDate" required placeholder="YYYY-MM-DD">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Change Credentials</h5>
+          <p class="card-text">Change your username and password.</p>
+          <button class="btn btn-primary w-100" (click)="credentialsActivity()">Credentials</button>
         </div>
-
-        <div class="form-group text-center">
-          <label for="checkOutDate" class="d-block mb-2">Insert check-out date</label>
-          <input type="text" class="form-control d-inline-block mx-auto" id="checkOutDate" name="checkOutDate" [(ngModel)]="selectedCheckOutDate" required placeholder="YYYY-MM-DD">
-        </div>
-
-        <div class="form-group text-center">
-          <label for="total" class="d-block mb-2">Insert total ($)</label>
-          <input type="text" class="form-control d-inline-block mx-auto" id="total" name="total" [(ngModel)]="selectedTotal" required>
-        </div>
-
-        <div class="form-group text-center">
-          <label for="isPaid" class="d-block mb-2">Is Paid</label>
-          <select class="form-control d-inline-block mx-auto" id="isPaid" name="isPaid" [(ngModel)]="selectedIsPaid" required>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Add</button>
-      </form>
+      </div>
     </div>
 
-
-    <div class="box mt-5">
-      <h2 class="text-center mb-3">Modify booking</h2>
-      <form (ngSubmit)="modifyBooking()" #modifyBookingForm="ngForm">
-        <div class="form-group text-center">
-          <label for="bookingId" class="d-block mb-2">Insert ID</label>
-          <input type="text" class="form-control d-block mx-auto" id="bookingId" name="bookingId" [(ngModel)]="selectedBookingId" (ngModelChange)="fetchBookingData()" required>
-        </div>
-
-        <div class="form-group text-center">
-          <label for="changedCheckInDate" class="d-block mb-2">Insert new check-in date</label>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckInDate" name="changedCheckInDate" [(ngModel)]="changedCheckInDate" required>
-        </div>
-
-        <div class="form-group text-center">
-          <label for="changedCheckOutDate" class="d-block mb-2">Insert new check-out date</label>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckOutDate" name="changedCheckOutDate" [(ngModel)]="changedCheckOutDate" required>
-        </div>
-
-        <div class="form-group text-center">
-          <label for="changedTotal" class="d-block mb-2">Insert new total ($)</label>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changedTotal" name="changedTotal" [(ngModel)]="changedTotal" required>
-        </div>
-
-        <div class="form-group text-center">
-          <label for="changedIsPaid" class="d-block mb-2">Insert new Is Paid</label>
-          <select class="form-control d-inline-block mx-auto" id="changedIsPaid" name="changedIsPaid" [(ngModel)]="changedIsPaid" required>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-
-
-        <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
-
-      </form>
-    </div>
-  </div>-->
-
-  <div class="box mt-5">
-    <h2 class="text-center mb-3">View and change login credentials</h2>
-    <button class="btn btn-primary w-100" (click)="credentialsActivity()">Change</button>
   </div>
-
 </div>
+
+</body>
 

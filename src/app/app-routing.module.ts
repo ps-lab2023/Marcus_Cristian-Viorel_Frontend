@@ -10,6 +10,7 @@ import {GuestActivityComponent} from "./components/guest-activity/guest-activity
 import {CredentialsActivityComponent} from "./components/credentials-activity/credentials-activity.component";
 import {BookingActivityComponent} from "./components/booking-activity/booking-activity.component";
 import {RegisterActivityComponent} from "./components/register-activity/register-activity.component";
+import {VacantRoomsActivityComponent} from "./components/vacant-rooms-activity/vacant-rooms-activity.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'guest-activity', component: GuestActivityComponent},
   { path: 'booking-activity', component: BookingActivityComponent},
   { path: 'credentials-activity', component: CredentialsActivityComponent},
-  { path: 'register-activity', component: RegisterActivityComponent}
+  { path: 'register-activity', component: RegisterActivityComponent},
+  { path: 'vacant-rooms-activity', component: VacantRoomsActivityComponent},
 ];
 
 @NgModule({

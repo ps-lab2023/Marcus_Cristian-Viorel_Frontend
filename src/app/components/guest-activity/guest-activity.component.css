@@ -6,6 +6,21 @@
   margin: 0 auto;
 }
 
+.btn2 {
+  display: block;
+  width: auto;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 47%;
+}
+
 #phone {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
@@ -29,7 +44,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1.2rem;
-  width: 28%;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -38,7 +53,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1.2rem;
-  width: 28%;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -70,21 +85,6 @@
   font-style: italic;
 }
 
-#id {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 28%;
-  box-sizing: border-box;
-}
-
-#id:focus {
-  outline: none;
-  border-color: #0074D9;
-  box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
-}
-
 .box form .form-group label {
   display: block;
   text-align: center;
@@ -108,11 +108,25 @@
 .box {
   margin: 50px auto;
   padding: 20px;
-  max-width: 1250px;
+  max-width: 1900px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   background-color: #fff;
+}
+
+.btn1 {
+  display: block;
+  width: auto;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 0%;
 }
 
 .btn {

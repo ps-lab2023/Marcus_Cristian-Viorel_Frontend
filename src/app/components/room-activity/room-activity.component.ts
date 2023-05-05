@@ -14,9 +14,6 @@ export class RoomActivityComponent {
   // list all available rooms
   rooms: RoomMergedWithRoomType[] = [];
 
-  // remove room
-  chosenId: any;
-
   // add new room
   roomTypes: RoomType[] = [];
   selectedRoomNumber: any;
@@ -24,12 +21,14 @@ export class RoomActivityComponent {
   newRoom: RoomJoinRoomType = new RoomJoinRoomType();
 
   // modify room
-  selectedRoomId: any;
   changedRoomNumberToModify: any;
   changedRoomTypeIdToModify: any;
 
   // filters
   filterSortByPriceActive: boolean = false;
+
+  // vacant rooms
+  vacantRooms: RoomMergedWithRoomType[] = [];
 
   constructor(private roomService: RoomService,
               private roomTypeService: RoomTypeService) {
@@ -55,16 +54,24 @@ export class RoomActivityComponent {
       // print the length of the roomTypes fetched
       console.log("roomTypes.length: " + this.roomTypes.length);
     });
+
+    this.roomService.getVacantRooms().subscribe(vacantRooms => {
+      this.vacantRooms = vacantRooms;
+
+      // print the length of the vacantRooms fetched
+      console.log("vacantRooms.length: " + this.vacantRooms.length);
+    });
   }
 
   goBack() {
     window.history.back();
   }
 
-  removeRoom() {
+  removeRoom(id: any) {
     console.log("removeRoom() in RoomActivityComponent");
-    this.roomService.removeRoom(this.chosenId).subscribe(
+    this.roomService.removeRoom(id).subscribe(
       () => {
+        this.rooms = this.rooms.filter(room => room.id != id);
         console.log("Room removed");
         this.ngOnInit();
       },
@@ -93,43 +100,17 @@ export class RoomActivityComponent {
       });
   }
 
-  modifyRoom() {
+  modifyRoom(id: any) {
     console.log("modifyRoom() in RoomActivityComponent");
-    console.log("selectedRoomId: " + this.selectedRoomId);
+    console.log("selectedRoomId: " + id);
     console.log("changedRoomNumberToModify: " + this.changedRoomNumberToModify);
     console.log("changedRoomTypeIdToModify: " + this.changedRoomTypeIdToModify);
 
-    if(this.selectedRoomId == null || this.selectedRoomId == "") {
-      return;
-    } else {
-      this.roomService.updateRoom(this.selectedRoomId, this.changedRoomNumberToModify, this.changedRoomTypeIdToModify).subscribe(
+    this.roomService.updateRoom(id, this.changedRoomNumberToModify, this.changedRoomTypeIdToModify).subscribe(
         () => {
           console.log("Room modified");
           this.ngOnInit();
         });
-    }
-  }
-
-  fetchRoomData() {
-    console.log("fetchRoomData() in RoomActivityComponent");
-    let fetchedRoom = this.findRoomById(this.selectedRoomId);
-
-    if(fetchedRoom != null) {
-      this.changedRoomNumberToModify = fetchedRoom.number;
-      this.changedRoomTypeIdToModify = fetchedRoom.roomTypeId;
-    } else {
-      this.changedRoomNumberToModify = "";
-      this.changedRoomTypeIdToModify = "";
-    }
-  }
-
-  findRoomById(id: any): any {
-    for(let room of this.rooms) {
-      if(room.id == id) {
-        return room;
-      }
-    }
-    return null;
   }
 
   sortByPrice() {
