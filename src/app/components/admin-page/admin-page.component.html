@@ -67,9 +67,29 @@
     <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
+          <h5 class="card-title">Export Bookings</h5>
+          <div class="snackbar-container">
+          </div>
+<!--          <p class="card-text">Export all bookings to an XML file.</p>-->
+          <button class="btn btn-primary w-100" (click)="exportBookingsToXML()">Export</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Display statistics</h5>
+          <p class="card-text">Display graphs by earnings.</p>
+          <button class="btn btn-primary w-100" (click)="graphActivity()">Show Stats</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
           <h5 class="card-title">Change Credentials</h5>
           <p class="card-text">Change your username and password.</p>
-          <button class="btn btn-primary w-100" (click)="credentialsActivity()">Credentials</button>
+          <button class="btn btn-primary w-100" (click)="credentialsActivity()">Change</button>
         </div>
       </div>
     </div>

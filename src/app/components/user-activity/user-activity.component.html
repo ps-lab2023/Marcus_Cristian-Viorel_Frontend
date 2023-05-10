@@ -13,7 +13,7 @@
           <tr>
         <th>ID</th>
         <th>Username</th>
-        <th>Password</th>
+        <th>Password (encrypted)</th>
         <th>Is Admin?</th>
             <th>Last Login</th>
         <th>Action</th>
@@ -23,7 +23,7 @@
       <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
-        <td>{{ user.pass }}</td>
+        <td>{{ user.hashedPass }}</td>
         <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
         <td>{{ user.lastLogin }}</td>
         <td>

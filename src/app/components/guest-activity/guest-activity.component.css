@@ -6,6 +6,10 @@
   margin: 0 auto;
 }
 
+.border-danger {
+  border-color: red !important;
+}
+
 .btn2 {
   display: block;
   width: auto;
@@ -30,25 +34,16 @@
   box-sizing: border-box;
 }
 
-#address {
+#address, #changedAddress {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1.2rem;
-  width: 128%;
+  width: 115%;
   box-sizing: border-box;
 }
 
-#bookingId {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-#roomId, #number {
+#bookingId, #changedBooking {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -57,7 +52,16 @@
   box-sizing: border-box;
 }
 
-#name, #email {
+#number, #changedPhone, #roomId, #changedRoom {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#name, #email, #changedEmail, #changedName {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -69,7 +73,8 @@
 .custom-table th, .custom-table td {
   border: 1px solid #ddd;
   padding: 8px;
-  white-space: nowrap;
+/*  white-space: nowrap;*/
+
 }
 
 .custom-table th {

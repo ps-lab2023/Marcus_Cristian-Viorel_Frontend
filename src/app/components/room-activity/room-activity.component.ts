@@ -4,6 +4,7 @@ import {RoomService} from "../../service/room.service";
 import {RoomType} from "../../model/RoomType";
 import {RoomTypeService} from "../../service/roomType.service";
 import {RoomMergedWithRoomType} from "../../model/RoomMergedWithRoomType";
+import {ValidatorService} from "../../service/validator.service";
 
 @Component({
   selector: 'app-room-activity',
@@ -29,6 +30,11 @@ export class RoomActivityComponent {
 
   // vacant rooms
   vacantRooms: RoomMergedWithRoomType[] = [];
+
+  // validation
+  isInvalidChangedRoomNumber: boolean = false;
+  isInvalidSelectedRoomNumber: boolean = false;
+
 
   constructor(private roomService: RoomService,
               private roomTypeService: RoomTypeService) {
@@ -84,6 +90,10 @@ export class RoomActivityComponent {
   addRoom() {
     // TOOD: show table with roomtypes and just request input of an id (bug-less)
     console.log("addRoom() in RoomActivityComponent");
+
+    // validation
+    this.isInvalidSelectedRoomNumber = ValidatorService.isInvalidRoomNumber(this.selectedRoomNumber);
+
     this.newRoom.number = this.selectedRoomNumber;
     this.newRoom.roomType = new RoomType();
     // @ts-ignore
@@ -102,9 +112,9 @@ export class RoomActivityComponent {
 
   modifyRoom(id: any) {
     console.log("modifyRoom() in RoomActivityComponent");
-    console.log("selectedRoomId: " + id);
-    console.log("changedRoomNumberToModify: " + this.changedRoomNumberToModify);
-    console.log("changedRoomTypeIdToModify: " + this.changedRoomTypeIdToModify);
+
+    // validation
+    this.isInvalidChangedRoomNumber = ValidatorService.isInvalidRoomNumber(this.changedRoomNumberToModify);
 
     this.roomService.updateRoom(id, this.changedRoomNumberToModify, this.changedRoomTypeIdToModify).subscribe(
         () => {

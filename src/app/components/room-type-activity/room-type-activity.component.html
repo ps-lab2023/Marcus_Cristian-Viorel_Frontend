@@ -32,15 +32,15 @@
         </td>
 
         <td>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changed_name" name="changed_name" [(ngModel)]="changedRoomTypeNameToModify" required>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changed_name" name="changed_name" [(ngModel)]="changedRoomTypeNameToModify" required [ngClass]="{'border-danger': isInvalidChangedRoomTypeName}">
         </td>
 
         <td>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changed_cost" name="changed_cost" [(ngModel)]="changedRoomTypeCostToModify" required>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changed_cost" name="changed_cost" [(ngModel)]="changedRoomTypeCostToModify" required [ngClass]="{'border-danger': isInvalidChangedRoomTypeCost}">
         </td>
 
         <td>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changed_description" name="changed_description" [(ngModel)]="changedRoomTypeDescriptionToModify" required>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changed_description" name="changed_description" [(ngModel)]="changedRoomTypeDescriptionToModify" required [ngClass]="{'border-danger': isInvalidChangedRoomTypeDescription}">
         </td>
 
         <td>
@@ -53,35 +53,23 @@
   </div>
 </div>
 
-<!--<div class="box mt-5">
-  <h2 class="text-center mb-3">Delete room type</h2>
-  <form (ngSubmit)="removeRoomType()" #removeRoomTypeForm="ngForm">
-    <div class="form-group text-center">
-      <label for="id" class="d-block mb-2">Insert ID</label>
-      <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
-    </div>
-    <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
-  </form>
-</div>-->
-
 <div class="box mt-5">
   <h2 class="text-center mb-3">Add room type</h2>
   <form (ngSubmit)="addRoomType()" #addRoomTypeForm="ngForm">
 
     <div class="form-group text-center">
       <label for="name" class="d-block mb-2">Insert name</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="name" name="name" [(ngModel)]="selectedName" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="name" name="name" [(ngModel)]="selectedName" required [ngClass]="{'border-danger': isInvalidSelectedRoomTypeName}">
     </div>
 
     <div class="form-group text-center">
       <label for="cost" class="d-block mb-2">Insert cost ($)</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="cost" name="cost" [(ngModel)]="selectedCost" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="cost" name="cost" [(ngModel)]="selectedCost" required [ngClass]="{'border-danger': isInvalidSelectedRoomTypeCost}">
     </div>
 
     <div class="form-group text-center">
       <label for="description" class="d-block mb-2">Insert description</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="description" name="description" [(ngModel)]="selectedDescription" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="description" name="description" [(ngModel)]="selectedDescription" required [ngClass]="{'border-danger': isInvalidSelectedRoomTypeDescription}">
     </div>
 
 
@@ -89,32 +77,5 @@
   </form>
 </div>
 
-<!--<div class="box mt-5">
-  <h2 class="text-center mb-3">Modify room type</h2>
-  <form (ngSubmit)="modifyRoomType()" #modifyRoomTypeForm="ngForm">
-    <div class="form-group text-center">
-      <label for="id" class="d-block mb-2">Insert ID</label>
-      <input type="text" class="form-control d-block mx-auto" id="crtid" name="crtid" [(ngModel)]="selectedRoomTypeId" (ngModelChange)="fetchRoomTypeData()" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changed_name" class="d-block mb-2">Insert new room type name</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changed_name" name="changed_name" [(ngModel)]="changedRoomTypeNameToModify" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changed_cost" class="d-block mb-2">Insert new room type cost/night</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changed_cost" name="changed_cost" [(ngModel)]="changedRoomTypeCostToModify" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changed_cost" class="d-block mb-2">Insert new room type description</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changed_description" name="changed_description" [(ngModel)]="changedRoomTypeDescriptionToModify" required>
-    </div>
-
-    <h2 class="warning-text">Warning! Operation will affect all current rooms' pricing and others.</h2>
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
-  </form>
-</div>-->
 
 

@@ -24,6 +24,7 @@ import { BookingActivityComponent } from './components/booking-activity/booking-
 import { CredentialsActivityComponent } from './components/credentials-activity/credentials-activity.component';
 import { RegisterActivityComponent } from './components/register-activity/register-activity.component';
 import { VacantRoomsActivityComponent } from './components/vacant-rooms-activity/vacant-rooms-activity.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { VacantRoomsActivityComponent } from './components/vacant-rooms-activity
     CredentialsActivityComponent,
     RegisterActivityComponent,
     VacantRoomsActivityComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,

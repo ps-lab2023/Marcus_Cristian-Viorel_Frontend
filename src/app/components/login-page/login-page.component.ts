@@ -5,6 +5,7 @@ import { User } from '../../model/User';
 import { UserService } from '../../service/user.service';
 import {Router} from "@angular/router";
 import {LoginService} from "../../service/login.service";
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +16,8 @@ export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({});
   passwordFieldType = "password";
+
+  users: User[] = [];
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
@@ -27,14 +30,32 @@ export class LoginPageComponent implements OnInit {
       name: ['', Validators.required],
       pass: ['', Validators.required]
     });
+
+    this.userService.getUsers().subscribe(
+      (response: User[]) => {
+        this.users = response;
+        console.log(this.users);
+      });
   }
 
-  onSubmit(): void {
+  private getHashedPassword(name: string): string {
+    let hashedPass: string | undefined = "";
+    this.users.forEach((user) => {
+      if (user.name === name) {
+        hashedPass = user.hashedPass;
+      }
+    });
+    return hashedPass;
+  }
+
+  async onSubmit(): Promise<void> {
     let user = new User();
     user.name = this.loginForm.value.name;
-    user.pass = this.loginForm.value.pass;
-    this.loginService.setUsername(user.name?user.name:"");
-    this.loginService.setPassword(user.pass?user.pass:"");
+    // @ts-ignore
+    user.hashedPass = this.getHashedPassword(user.name);
+
+    this.loginService.setUsername(user.name ? user.name : "");
+    this.loginService.setHashedPass(user.hashedPass ? user.hashedPass : "");
 
     this.userService.login(user).subscribe(
       (response: User) => {

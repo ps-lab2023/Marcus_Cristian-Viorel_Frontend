@@ -6,6 +6,10 @@
   margin: 0 auto;
 }
 
+.border-danger {
+  border-color: red !important;
+}
+
 .btn1 {
   display: block;
   width: auto;

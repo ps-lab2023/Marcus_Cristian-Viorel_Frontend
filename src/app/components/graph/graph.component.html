@@ -1,0 +1,39 @@
+<!--
+<div class="chart-container">
+  <canvas  id="bookings-line" >{{ chart }}</canvas>
+</div>
+
+<div class="chart-container">
+  <canvas  id="bookings-pie" >{{ chart }}</canvas>
+</div>
+-->
+
+<div class="box">
+  <h3 class="text-center">Statistics</h3>
+  <button type="button" class="btn2 btn-secondary" (click)="goBack()">Back</button>
+</div>
+
+<div class="box">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Earnings in bookings by month</h2>
+      <div class="chart-container">
+        <canvas  id="bookings-line" >{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Earnings in bookings by year</h2>
+      <div class="chart-container">
+        <canvas  id="bookings-pie" >{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

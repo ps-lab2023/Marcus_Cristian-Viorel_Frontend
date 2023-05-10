@@ -1,35 +1,6 @@
-#chosenUsername, #chosenPassword {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 88%;
-  box-sizing: border-box;
-}
-
-.border-danger {
-  border-color: red !important;
-}
-
-#snackbar {
-  bottom: 50px;
-  top: unset;
-}
-
-#chosenIsAdmin {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.warning-text {
-  color: red;
-  font-size: 14px;
-  font-weight: 600;
-  font-style: italic;
+.chart-container {
+  width: 80%;
+  margin: 50px auto;
 }
 
 .box form .form-group label {
@@ -44,25 +15,23 @@
   display: block;
   margin: 0 auto;
   width: 8%;
-  text-align: center;
 }
 
 .box form .form-group {
-  display: inline-block;
   margin-bottom: 20px;
 }
 
 .box {
   margin: 50px auto;
   padding: 20px;
-  max-width: 1250px;
+  max-width: 1350px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   background-color: #fff;
 }
 
-.btn {
+.btn2 {
   display: block;
   width: auto;
   background-color: #0074D9;
@@ -74,7 +43,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin-top: 1rem;
-  margin-left: 43%;
+  margin-left: 47%;
 }
 
 h3 {

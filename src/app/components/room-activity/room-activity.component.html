@@ -37,7 +37,7 @@
             </td>
 
             <td>
-              <input type="text" class="form-control" id="changed_number" name="changed_number" [(ngModel)]="changedRoomNumberToModify" required>
+              <input type="text" class="form-control" id="changed_number" name="changed_number" [(ngModel)]="changedRoomNumberToModify" required [ngClass]="{'border-danger': isInvalidChangedRoomNumber}">
             </td>
 
             <td>
@@ -61,25 +61,13 @@
   </div>
 </div>
 
-<!--<div class="box mt-5">
-  <h2 class="text-center mb-3">Delete room</h2>
-  <form (ngSubmit)="removeRoom()" #removeRoomForm="ngForm">
-    <div class="form-group text-center">
-      <label for="id" class="d-block mb-2">Insert ID</label>
-      <input type="text" class="form-control d-block mx-auto" id="id" name="id" [(ngModel)]="chosenId" required>
-    </div>
-    <h2 class="warning-text">Warning! Operation cannot be reverted.</h2>
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Remove</button>
-  </form>
-</div>-->
-
 <div class="box mt-5">
   <h2 class="text-center mb-3">Add room</h2>
   <form (ngSubmit)="addRoom()" #addRoomForm="ngForm">
 
     <div class="form-group text-center">
       <label for="number" class="d-block mb-2">Insert door no.</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="number" name="number" [(ngModel)]="selectedRoomNumber" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="number" name="number" [(ngModel)]="selectedRoomNumber" required [ngClass]="{'border-danger': isInvalidSelectedRoomNumber}">
     </div>
 
     <div class="form-group text-center">
@@ -92,30 +80,6 @@
     <button type="submit" class="btn2 btn-primary d-block mx-auto mt-3">Add</button>
   </form>
 </div>
-
-
-<!--<div class="box mt-5">
-  <h2 class="text-center mb-3">Modify room</h2>
-  <form (ngSubmit)="modifyRoom()" #modifyRoomForm="ngForm">
-    <div class="form-group text-center">
-      <label for="id" class="d-block mb-2">Insert ID</label>
-      <input type="text" class="form-control d-block mx-auto" id="crtid" name="crtid" [(ngModel)]="selectedRoomId" (ngModelChange)="fetchRoomData()" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="number" class="d-block mb-2">Insert new door no.</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changed_number" name="changed_number" [(ngModel)]="changedRoomNumberToModify" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="roomTypeId" class="d-block mb-2">Insert new room type ID</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changed_roomTypeId" name="changed_roomTypeId" [(ngModel)]="changedRoomTypeIdToModify" required>
-    </div>
-
-    <h2 class="warning-text">Tip: you may create/update room types first if you want to modify pricing and others. See the Admin Dashboard.</h2>
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
-  </form>
-</div>-->
 
 
 

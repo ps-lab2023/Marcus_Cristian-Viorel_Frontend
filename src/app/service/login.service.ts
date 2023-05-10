@@ -7,7 +7,7 @@ import {User} from "../model/User";
 
 export class LoginService {
   private username: string = "";
-  private password: string = "";
+  private hashedPass: string = "";
   private isAdmin: boolean = false;
   private user: User = new User()
 
@@ -23,11 +23,11 @@ export class LoginService {
   }
 
   getPassword() {
-    return this.password;
+    return this.hashedPass;
   }
 
-  setPassword(password: string): void {
-    this.password = password;
+  setHashedPass(password: string): void {
+    this.hashedPass = password;
   }
 
   setIsAdmin(isAdmin: boolean): void {

@@ -37,4 +37,9 @@ export class BookingService {
     console.log("updateBooking() in BookingService");
     return this.httpClient.put<Booking>(this.baseUrl + '/update/' + selectedBookingId + '/' + changedCheckInDate + '/' + changedCheckOutDate + '/' + changedTotal + '/' + changedIsPaid, null);
   }
+
+  exportBookingsToXML(): Observable<any> {
+    console.log("exportBookingsToXML() in BookingService");
+    return this.httpClient.get(this.baseUrl + '/export/xml');
+  }
 }

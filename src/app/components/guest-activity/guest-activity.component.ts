@@ -10,6 +10,7 @@ import {Room} from "../../model/Room";
 import {GuestData} from "../../model/GuestData";
 import {GuestDataService} from "../../service/guestData.service";
 import {switchMap} from "rxjs";
+import {ValidatorService} from "../../service/validator.service";
 
 @Component({
   selector: 'app-guest-activity',
@@ -30,8 +31,27 @@ export class GuestActivityComponent {
   selectedAddress: any;
   newGuest: GuestJoinGuestData = new GuestJoinGuestData();
 
+  // edit guest
+  changedBooking: any;
+  changedRoom: any;
+  changedName: any;
+  changedEmail: any;
+  changedPhone: any;
+  changedAddress: any;
+
   // filtering
   filterSortNamesActive: boolean = false;
+
+  // validation
+  isInvalidSelectedName: boolean = false;
+  isInvalidSelectedAddress: boolean = false;
+  isInvalidSelectedEmail: boolean = false;
+  isInvalidSelectedPhone: boolean = false;
+  isInvalidChangedName: boolean = false;
+  isInvalidChangedAddress: boolean = false;
+  isInvalidChangedEmail: boolean = false;
+  isInvalidChangedPhone: boolean = false;
+
 
   constructor(private guestService: GuestService,
               private bookingService: BookingService,
@@ -87,12 +107,18 @@ export class GuestActivityComponent {
   // cu siguranta e de la faptul ca trimit un guestData.user null
   addGuest() {
     console.log("addGuest() in GuestActivityComponent");
-      this.bookingService.findBookingById(this.selectedBookingId).subscribe(booking => {
-        this.newGuest.booking = booking;
-/*        this.newGuest.id = this.newGuest.booking.id;*/
-/*        this.newGuest.booking = booking;*/
-        console.log("this.newGuest.booking.id: " + this.newGuest.booking.id);
-      });
+
+    this.isInvalidSelectedName = (this.selectedName == null || this.selectedName == "");
+    this.isInvalidSelectedAddress = (this.selectedAddress == null || this.selectedAddress == "");
+    this.isInvalidSelectedEmail = ValidatorService.isInvalidEmail(this.selectedEmail);
+    this.isInvalidSelectedPhone = ValidatorService.isInvalidPhone(this.selectedPhone);
+
+    this.bookingService.findBookingById(this.selectedBookingId).subscribe(booking => {
+      this.newGuest.booking = booking;
+/*       this.newGuest.id = this.newGuest.booking.id;*/
+/*       this.newGuest.booking = booking;*/
+      console.log("this.newGuest.booking.id: " + this.newGuest.booking.id);
+    });
 
     this.roomService.getRoomById(this.selectedRoomId).subscribe(room => {
       this.newGuest.room = room;
@@ -131,6 +157,20 @@ export class GuestActivityComponent {
       this.ngOnInit(true);
     } else {
       this.ngOnInit();
+    }
+  }
+
+  modifyGuest(id: any) {
+    console.log("modifyGuest() in GuestActivityComponent");
+
+    // validation
+    this.isInvalidChangedName = (this.changedName == null || this.changedName == "");
+    this.isInvalidChangedAddress = (this.changedAddress == null || this.changedAddress == "");
+    this.isInvalidChangedEmail = ValidatorService.isInvalidEmail(this.changedEmail);
+    this.isInvalidChangedPhone = ValidatorService.isInvalidPhone(this.changedPhone);
+
+    if(this.isInvalidChangedName || this.isInvalidChangedAddress || this.isInvalidChangedEmail || this.isInvalidChangedPhone) {
+      return;
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {RoomType} from "../../model/RoomType";
 import {RoomTypeService} from "../../service/roomType.service";
+import {ValidatorService} from "../../service/validator.service";
 
 @Component({
   selector: 'app-room-type-activity',
@@ -20,6 +21,14 @@ export class RoomTypeActivityComponent {
   changedRoomTypeNameToModify: any;
   changedRoomTypeCostToModify: any;
   changedRoomTypeDescriptionToModify: any;
+
+  // validation
+  isInvalidChangedRoomTypeName: boolean = false;
+  isInvalidChangedRoomTypeCost: boolean = false;
+  isInvalidChangedRoomTypeDescription: boolean = false;
+  isInvalidSelectedRoomTypeName: boolean = false;
+  isInvalidSelectedRoomTypeCost: boolean = false;
+  isInvalidSelectedRoomTypeDescription: boolean = false;
 
   constructor(private roomTypeService: RoomTypeService) {
   }
@@ -52,7 +61,13 @@ export class RoomTypeActivityComponent {
 
   addRoomType() {
     console.log("addRoomType() in RoomTypeActivityComponent");
-    if (!(this.selectedName == null || this.selectedCost == null || this.selectedDescription == null)) {
+
+    // validation
+    this.isInvalidSelectedRoomTypeName = this.selectedName == null;
+    this.isInvalidSelectedRoomTypeCost = ValidatorService.isInvalidPrice(this.selectedCost);
+    this.isInvalidSelectedRoomTypeDescription = this.selectedDescription == null;
+
+    if (!this.isInvalidSelectedRoomTypeName && !this.isInvalidSelectedRoomTypeCost && !this.isInvalidSelectedRoomTypeDescription) {
       let roomType: RoomType = new RoomType();
 /*      roomType.id = this.selectedId;*/
       roomType.name = this.selectedName;
@@ -70,27 +85,19 @@ export class RoomTypeActivityComponent {
   modifyRoomType(id: any) {
     console.log("modifyRoomType() in RoomTypeActivityComponent");
 
-    this.roomTypeService.updateRoomType(id, this.changedRoomTypeNameToModify, this.changedRoomTypeCostToModify, this.changedRoomTypeDescriptionToModify).subscribe(
+    // validation
+    this.isInvalidChangedRoomTypeName = this.changedRoomTypeNameToModify == null;
+    this.isInvalidChangedRoomTypeCost = ValidatorService.isInvalidPrice(this.changedRoomTypeCostToModify);
+    this.isInvalidChangedRoomTypeDescription = this.changedRoomTypeDescriptionToModify == null;
+
+    if (!this.isInvalidChangedRoomTypeName && !this.isInvalidChangedRoomTypeCost && !this.isInvalidChangedRoomTypeDescription) {
+      this.roomTypeService.updateRoomType(id, this.changedRoomTypeNameToModify, this.changedRoomTypeCostToModify, this.changedRoomTypeDescriptionToModify).subscribe(
         () => {
           console.log("RoomType modified");
           this.ngOnInit();
         });
-  }
-
-/*  fetchRoomTypeData() {
-    console.log("fetchRoomTypeData() in RoomTypeActivityComponent");
-    let fetchedRoomType = this.findRoomTypeById(this.selectedRoomTypeId);
-
-    if(fetchedRoomType != null) {
-      this.changedRoomTypeNameToModify = fetchedRoomType.name;
-      this.changedRoomTypeCostToModify = fetchedRoomType.cost;
-      this.changedRoomTypeDescriptionToModify = fetchedRoomType.description;
-    } else {
-      this.changedRoomTypeNameToModify = "";
-      this.changedRoomTypeCostToModify = "";
-      this.changedRoomTypeDescriptionToModify = "";
     }
-  }*/
+  }
 
   findRoomTypeById(id: any): any {
     console.log("findRoomTypeById() in RoomTypeActivityComponent");

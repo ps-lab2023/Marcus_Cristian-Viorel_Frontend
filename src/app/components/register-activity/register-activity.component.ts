@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {User} from "../../model/User";
 import {UserService} from "../../service/user.service";
+import {ValidatorService} from "../../service/validator.service";
 
 @Component({
   selector: 'app-register-activity',
@@ -13,6 +14,10 @@ export class RegisterActivityComponent {
   chosenPassword: any;
   chosenIsAdmin: any;
   users: User[] = [];
+
+  // validators
+  isInvalidChosenUsername: boolean = false;
+  isInvalidChosenPassword: boolean = false;
 
   constructor(private router: Router, private userService: UserService) {
   }
@@ -31,22 +36,18 @@ export class RegisterActivityComponent {
   register() {
     console.log("register() in RegisterActivityComponent");
 
-    if(this.chosenUsername == null || this.chosenPassword == null || this.chosenIsAdmin == null) {
+    this.isInvalidChosenUsername = ValidatorService.isInvalidUsername(this.chosenUsername);
+    this.isInvalidChosenPassword = ValidatorService.isInvalidPassword(this.chosenPassword);
+
+    let foundUser = this.getUserIdByUsername(this.chosenUsername);
+    this.isInvalidChosenUsername = (foundUser != -1);
+
+    if(this.isInvalidChosenUsername || this.isInvalidChosenPassword) {
       return;
     } else {
-      // find for duplicate username
-      for(let user of this.users) {
-        if(user.name == this.chosenUsername) {
-          // TODO: show error message (snackbar)
-          console.log("duplicate username");
-          this.showSnackBar("Duplicate username!");
-          return;
-        }
-      }
-
       let newUser = new User();
       newUser.name = this.chosenUsername;
-      newUser.pass = this.chosenPassword;
+      newUser.hashedPass = this.chosenPassword;
       newUser.isAdmin = this.chosenIsAdmin == "Admin";
 
       this.userService.addUser(newUser).subscribe(
@@ -55,13 +56,22 @@ export class RegisterActivityComponent {
           // wait for 3 secs
           this.showSnackBar("Register success! Redirecting to login...", 'green');
           setTimeout(() => {
-            this.router.navigate(['/login']);}
-            , 3000);
+            this.router.navigate(['/login']);
+            }, 3000);
         },
         error => {
           console.log("Error adding user");
         });
     }
+  }
+
+  private getUserIdByUsername(username: any): any {
+    for(let user of this.users) {
+      if(user.name == username) {
+        return user.id;
+      }
+    }
+    return -1;
   }
 
   showSnackBar(message: string, color: string = 'red') {

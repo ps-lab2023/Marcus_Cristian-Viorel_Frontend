@@ -6,6 +6,10 @@
   margin: 0 auto;
 }
 
+.border-danger {
+  border-color: red !important;
+}
+
 #crtid {
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;

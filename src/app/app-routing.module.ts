@@ -11,6 +11,7 @@ import {CredentialsActivityComponent} from "./components/credentials-activity/cr
 import {BookingActivityComponent} from "./components/booking-activity/booking-activity.component";
 import {RegisterActivityComponent} from "./components/register-activity/register-activity.component";
 import {VacantRoomsActivityComponent} from "./components/vacant-rooms-activity/vacant-rooms-activity.component";
+import {GraphComponent} from "./components/graph/graph.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'credentials-activity', component: CredentialsActivityComponent},
   { path: 'register-activity', component: RegisterActivityComponent},
   { path: 'vacant-rooms-activity', component: VacantRoomsActivityComponent},
+  { path: 'graph', component: GraphComponent},
 ];
 
 @NgModule({

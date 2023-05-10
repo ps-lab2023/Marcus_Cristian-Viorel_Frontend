@@ -6,12 +6,12 @@
   <form (ngSubmit)="register()" #registerForm="ngForm">
     <div class="form-group text-center">
       <label for="chosenUsername" class="d-block mb-2">Insert username (unique)</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="chosenUsername" name="chosenUsername" [(ngModel)]="chosenUsername" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="chosenUsername" name="chosenUsername" [(ngModel)]="chosenUsername" required placeholder="no spaces" [ngClass]="{'border-danger': isInvalidChosenUsername}">
     </div>
 
     <div class="form-group text-center">
       <label for="chosenPassword" class="d-block mb-2">Insert password</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="chosenPassword" name="chosenPassword" [(ngModel)]="chosenPassword" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="chosenPassword" name="chosenPassword" [(ngModel)]="chosenPassword" required placeholder="1 letter (min 6 chars)" [ngClass]="{'border-danger': isInvalidChosenPassword}">
     </div>
 
     <div class="form-group text-center">

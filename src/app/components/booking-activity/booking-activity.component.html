@@ -35,15 +35,15 @@
         </td>
 
         <td>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckInDate" name="changedCheckInDate" [(ngModel)]="changedCheckInDate" required placeholder="YYYY-MM-DD">
+          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckInDate" name="changedCheckInDate" [(ngModel)]="changedCheckInDate" required placeholder="YYYY-MM-DD" [ngClass]="{'border-danger': isInvalidChangedCheckInDate}">
         </td>
 
         <td>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckOutDate" name="changedCheckOutDate" [(ngModel)]="changedCheckOutDate" required placeholder="YYYY-MM-DD">
+          <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckOutDate" name="changedCheckOutDate" [(ngModel)]="changedCheckOutDate" required placeholder="YYYY-MM-DD" [ngClass]="{'border-danger': isInvalidChangedCheckOutDate}">
         </td>
 
         <td>
-          <input type="text" class="form-control d-inline-block mx-auto" id="changedTotal" name="changedTotal" [(ngModel)]="changedTotal" required>
+          <input type="text" class="form-control d-inline-block mx-auto" id="changedTotal" name="changedTotal" [(ngModel)]="changedTotal" required [ngClass]="{'border-danger': isInvalidChangedTotal}">
         </td>
 
         <td>
@@ -72,17 +72,17 @@
 
     <div class="form-group text-center">
       <label for="checkInDate" class="d-block mb-2">Insert check-in date</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="checkInDate" name="checkInDate" [(ngModel)]="selectedCheckInDate" required placeholder="YYYY-MM-DD">
+      <input type="text" class="form-control d-inline-block mx-auto" id="checkInDate" name="checkInDate" [(ngModel)]="selectedCheckInDate" required placeholder="YYYY-MM-DD" [ngClass]="{'border-danger': isInvalidSelectedCheckInDate}">
     </div>
 
     <div class="form-group text-center">
       <label for="checkOutDate" class="d-block mb-2">Insert check-out date</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="checkOutDate" name="checkOutDate" [(ngModel)]="selectedCheckOutDate" required placeholder="YYYY-MM-DD">
+      <input type="text" class="form-control d-inline-block mx-auto" id="checkOutDate" name="checkOutDate" [(ngModel)]="selectedCheckOutDate" required placeholder="YYYY-MM-DD" [ngClass]="{'border-danger': isInvalidSelectedCheckOutDate}">
     </div>
 
     <div class="form-group text-center">
       <label for="total" class="d-block mb-2">Insert total ($)</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="total" name="total" [(ngModel)]="selectedTotal" required>
+      <input type="text" class="form-control d-inline-block mx-auto" id="total" name="total" [(ngModel)]="selectedTotal" required [ngClass]="{'border-danger': isInvalidSelectedTotal}">
     </div>
 
     <div class="form-group text-center">
@@ -96,41 +96,6 @@
     <button type="submit" class="btn2 btn-primary d-block mx-auto mt-3">Add</button>
   </form>
 </div>
-
-<!--<div class="box mt-5">
-  <h2 class="text-center mb-3">Modify booking</h2>
-  <form (ngSubmit)="modifyBooking()" #modifyBookingForm="ngForm">
-    <div class="form-group text-center">
-      <label for="bookingId" class="d-block mb-2">Insert ID</label>
-      <input type="text" class="form-control d-block mx-auto" id="bookingId" name="bookingId" [(ngModel)]="selectedBookingId" (ngModelChange)="fetchBookingData()" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changedCheckInDate" class="d-block mb-2">Insert new check-in date</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckInDate" name="changedCheckInDate" [(ngModel)]="changedCheckInDate" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changedCheckOutDate" class="d-block mb-2">Insert new check-out date</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changedCheckOutDate" name="changedCheckOutDate" [(ngModel)]="changedCheckOutDate" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changedTotal" class="d-block mb-2">Insert new total ($)</label>
-      <input type="text" class="form-control d-inline-block mx-auto" id="changedTotal" name="changedTotal" [(ngModel)]="changedTotal" required>
-    </div>
-
-    <div class="form-group text-center">
-      <label for="changedIsPaid" class="d-block mb-2">Insert new Is Paid</label>
-      <select class="form-control d-inline-block mx-auto" id="changedIsPaid" name="changedIsPaid" [(ngModel)]="changedIsPaid" required>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Modify</button>
-  </form>
-</div>-->
 
 
 

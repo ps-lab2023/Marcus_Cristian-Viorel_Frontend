@@ -3,6 +3,7 @@ import {Booking} from "../../model/Booking";
 import {BookingService} from "../../service/booking.service";
 import {User} from "../../model/User";
 import {LoginService} from "../../service/login.service";
+import {ValidatorService} from "../../service/validator.service";
 
 @Component({
   selector: 'app-booking-activity',
@@ -27,6 +28,14 @@ export class BookingActivityComponent {
   // filter
   filterUnpaidActive: boolean = false;
 
+  // validation
+  isInvalidChangedCheckInDate: boolean = false;
+  isInvalidChangedCheckOutDate: boolean = false;
+  isInvalidChangedTotal: boolean = false;
+  isInvalidSelectedCheckInDate: boolean = false;
+  isInvalidSelectedCheckOutDate: boolean = false;
+  isInvalidSelectedTotal: boolean = false;
+
   constructor(private bookingService: BookingService, private loginService: LoginService) {
   }
 
@@ -49,6 +58,10 @@ export class BookingActivityComponent {
 
       console.log("bookings.length: " + this.bookings.length);
     });
+
+    // default dropdown values
+    this.changedIsPaid = "false";
+    this.selectedIsPaid = "false";
   }
 
   goBack() {
@@ -66,6 +79,23 @@ export class BookingActivityComponent {
 
   addBooking() {
     console.log("addBooking() in BookingActivityComponent");
+
+    this.isInvalidSelectedCheckInDate = ValidatorService.isInvalidDate(this.selectedCheckInDate);
+    this.isInvalidSelectedCheckOutDate = ValidatorService.isInvalidDate(this.selectedCheckOutDate);
+    this.isInvalidSelectedTotal = ValidatorService.isInvalidPrice(this.selectedTotal);
+
+    console.log("validareeee " + this.isInvalidSelectedCheckInDate + " " + this.isInvalidSelectedCheckOutDate + " " + this.isInvalidSelectedTotal);
+
+    if (this.isInvalidSelectedCheckInDate || this.isInvalidSelectedCheckOutDate || this.isInvalidSelectedTotal) {
+      return;
+    }
+
+    if (ValidatorService.parseDate(this.selectedCheckInDate) > ValidatorService.parseDate(this.selectedCheckOutDate)) {
+      this.isInvalidSelectedCheckInDate = true;
+      this.isInvalidSelectedCheckOutDate = true;
+      return;
+    }
+
     let newBooking = new Booking();
 
     newBooking.checkInDate = this.selectedCheckInDate;
@@ -83,6 +113,20 @@ export class BookingActivityComponent {
 
   modifyBooking(id: any) {
     console.log("modifyBooking() in BookingActivityComponent");
+
+    // validation
+    this.isInvalidChangedCheckInDate = ValidatorService.isInvalidDate(this.changedCheckInDate);
+    this.isInvalidChangedCheckOutDate = ValidatorService.isInvalidDate(this.changedCheckOutDate);
+    this.isInvalidChangedTotal = ValidatorService.isInvalidPrice(this.changedTotal);
+
+    if(ValidatorService.parseDate(this.changedCheckInDate) > ValidatorService.parseDate(this.changedCheckOutDate)) {
+      this.isInvalidChangedCheckInDate = true;
+      this.isInvalidChangedCheckOutDate = true;
+    } else {
+      this.isInvalidChangedCheckInDate = false;
+      this.isInvalidChangedCheckOutDate = false;
+    }
+
     this.bookingService.updateBooking(id, this.changedCheckInDate, this.changedCheckOutDate, this.changedTotal, this.changedIsPaid).subscribe(
         () => {
           console.log("Booking modified");
