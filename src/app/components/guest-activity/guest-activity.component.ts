@@ -6,7 +6,6 @@ import {BookingService} from "../../service/booking.service";
 import {RoomMergedWithRoomType} from "../../model/RoomMergedWithRoomType";
 import {RoomService} from "../../service/room.service";
 import {GuestJoinGuestData} from "../../model/GuestJoinGuestData";
-import {Room} from "../../model/Room";
 import {GuestData} from "../../model/GuestData";
 import {GuestDataService} from "../../service/guestData.service";
 import {switchMap} from "rxjs";
@@ -60,33 +59,28 @@ export class GuestActivityComponent {
   }
 
   ngOnInit(filterSortNamesActive: boolean = false): void {
-    console.log("ngOnInit() in GuestActivityComponent");
     this.guestService.getGuests().subscribe(guests => {
       this.guests = guests;
       if(filterSortNamesActive) { // sort by name
         // @ts-ignore
         this.guests.sort((a, b) => a.name.localeCompare(b.name));
       }
-      // print the length of the guests fetched
-      console.log("guests.length: " + this.guests.length);
     });
 
 
     this.bookingService.getBookings().subscribe(bookings => {
       this.bookings = bookings;
-      // tidy the booking dates to show friendly format
+
       this.bookings.forEach(booking => {
         // @ts-ignore
         booking.checkInDate = booking.checkInDate.substring(0, 10);
         // @ts-ignore
         booking.checkOutDate = booking.checkOutDate.substring(0, 10);
       });
-      console.log("bookings.length: " + this.bookings.length);
     });
 
     this.roomService.getRooms().subscribe(rooms => {
       this.rooms = rooms;
-      console.log("rooms.length: " + this.rooms.length);
     });
   }
 
@@ -95,19 +89,13 @@ export class GuestActivityComponent {
   }
 
   removeGuest(id: any) {
-    console.log("removeGuest() in GuestActivityComponent");
     this.guestService.removeGuest(id).subscribe(
       () => {
-        console.log("Guest removed");
         this.ngOnInit();
       });
   }
 
-  // TODO: addGuest() is not working
-  // cu siguranta e de la faptul ca trimit un guestData.user null
   addGuest() {
-    console.log("addGuest() in GuestActivityComponent");
-
     this.isInvalidSelectedName = (this.selectedName == null || this.selectedName == "");
     this.isInvalidSelectedAddress = (this.selectedAddress == null || this.selectedAddress == "");
     this.isInvalidSelectedEmail = ValidatorService.isInvalidEmail(this.selectedEmail);
@@ -115,15 +103,10 @@ export class GuestActivityComponent {
 
     this.bookingService.findBookingById(this.selectedBookingId).subscribe(booking => {
       this.newGuest.booking = booking;
-/*       this.newGuest.id = this.newGuest.booking.id;*/
-/*       this.newGuest.booking = booking;*/
-      console.log("this.newGuest.booking.id: " + this.newGuest.booking.id);
     });
 
     this.roomService.getRoomById(this.selectedRoomId).subscribe(room => {
       this.newGuest.room = room;
-/*      this.newGuest.id = this.newGuest.room.id;*/
-      console.log("this.newGuest.room.id: " + this.newGuest.room.id);
     });
 
     this.newGuest.guestData = new GuestData();
@@ -132,22 +115,19 @@ export class GuestActivityComponent {
     this.newGuest.guestData.phone = this.selectedPhone;
     this.newGuest.guestData.address = this.selectedAddress;
 
-/*    this.guestDataService.addGuestData(this.newGuest.guestData).subscribe(
+    this.guestDataService.addGuestData(this.newGuest.guestData).subscribe(
       () => {
-        console.log("GuestData added");
       });
 
     this.guestService.addGuest(this.newGuest).subscribe(
       () => {
-        console.log("Guest added");
-      });*/
+      });
 
     this.guestDataService.addGuestData(this.newGuest.guestData)
       .pipe(
         switchMap(() => this.guestService.addGuest(this.newGuest))
       )
       .subscribe();
-    console.log("AM AJUNS SI AICI FINALLY");
     this.ngOnInit();
   }
 
@@ -161,8 +141,6 @@ export class GuestActivityComponent {
   }
 
   modifyGuest(id: any) {
-    console.log("modifyGuest() in GuestActivityComponent");
-
     // validation
     this.isInvalidChangedName = (this.changedName == null || this.changedName == "");
     this.isInvalidChangedAddress = (this.changedAddress == null || this.changedAddress == "");

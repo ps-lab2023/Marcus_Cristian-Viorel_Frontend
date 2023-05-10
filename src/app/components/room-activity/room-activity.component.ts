@@ -41,7 +41,6 @@ export class RoomActivityComponent {
   }
 
   ngOnInit(filterSortByPriceActive: boolean = false): void {
-    console.log("ngOnInit() in RoomActivityComponent");
     this.roomService.getRooms().subscribe(rooms => {
       this.rooms = rooms;
 
@@ -49,23 +48,14 @@ export class RoomActivityComponent {
         // @ts-ignore
         this.rooms.sort((a, b) => a.cost - b.cost);
       }
-
-      // print the length of the rooms fetched
-      console.log("rooms.length: " + this.rooms.length);
     });
 
     this.roomTypeService.getRoomTypes().subscribe(roomTypes => {
       this.roomTypes = roomTypes;
-
-      // print the length of the roomTypes fetched
-      console.log("roomTypes.length: " + this.roomTypes.length);
     });
 
     this.roomService.getVacantRooms().subscribe(vacantRooms => {
       this.vacantRooms = vacantRooms;
-
-      // print the length of the vacantRooms fetched
-      console.log("vacantRooms.length: " + this.vacantRooms.length);
     });
   }
 
@@ -74,23 +64,15 @@ export class RoomActivityComponent {
   }
 
   removeRoom(id: any) {
-    console.log("removeRoom() in RoomActivityComponent");
     this.roomService.removeRoom(id).subscribe(
       () => {
         this.rooms = this.rooms.filter(room => room.id != id);
-        console.log("Room removed");
         this.ngOnInit();
-      },
-      error => {
-        //TODO: handle error/case when room is taken by a booking
       }
     );
   }
 
   addRoom() {
-    // TOOD: show table with roomtypes and just request input of an id (bug-less)
-    console.log("addRoom() in RoomActivityComponent");
-
     // validation
     this.isInvalidSelectedRoomNumber = ValidatorService.isInvalidRoomNumber(this.selectedRoomNumber);
 
@@ -99,11 +81,8 @@ export class RoomActivityComponent {
     // @ts-ignore
     this.newRoom.roomType.id = this.selectedRoomTypeId;
 
-    console.log("Chosen id: " + this.newRoom.roomType?.id);
-
     this.roomService.addRoom(this.newRoom).subscribe(
       () => {
-        console.log("Room added");
         this.roomService.getRooms().subscribe(rooms => {
           this.rooms = rooms;
         });
@@ -111,14 +90,11 @@ export class RoomActivityComponent {
   }
 
   modifyRoom(id: any) {
-    console.log("modifyRoom() in RoomActivityComponent");
-
     // validation
     this.isInvalidChangedRoomNumber = ValidatorService.isInvalidRoomNumber(this.changedRoomNumberToModify);
 
     this.roomService.updateRoom(id, this.changedRoomNumberToModify, this.changedRoomTypeIdToModify).subscribe(
         () => {
-          console.log("Room modified");
           this.ngOnInit();
         });
   }

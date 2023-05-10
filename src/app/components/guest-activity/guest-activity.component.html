@@ -10,9 +10,6 @@
       <thead>
       <tr>
         <th>ID</th>
-<!--        <th>Booking ID</th>
-        <th>Room ID</th>
-        <th>Guest Data ID</th>-->
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -30,9 +27,6 @@
       <tbody>
       <tr *ngFor="let guest of guests">
         <td>{{ guest.id }}</td>
-<!--        <td>{{ guest.bookingId }}</td>
-        <td>{{ guest.roomId }}</td>
-        <td>{{ guest.guestDataId }}</td>-->
         <td>{{ guest.name }}</td>
         <td>{{ guest.email }}</td>
         <td>{{ guest.phone }}</td>
@@ -125,4 +119,4 @@
 
     <button type="submit" class="btn btn-primary d-block mx-auto mt-3">Add</button>
   </form>
-
+</div>

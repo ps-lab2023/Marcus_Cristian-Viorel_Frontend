@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { User } from '../../model/User';
 import { UserService } from '../../service/user.service';
 import {Router} from "@angular/router";
 import {LoginService} from "../../service/login.service";
-import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login-page',
@@ -34,7 +33,6 @@ export class LoginPageComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (response: User[]) => {
         this.users = response;
-        console.log(this.users);
       });
   }
 
@@ -61,25 +59,20 @@ export class LoginPageComponent implements OnInit {
       (response: User) => {
         user = response;
         this.loginService.setUser(user);
-        console.log(user);
 
         if (user.isAdmin) {
           // Navigate to admin page
-          console.log("admin");
           this.loginService.setIsAdmin(true);
           this.router.navigate(['/admin']);
         } else {
           // Navigate to user page
-          console.log("user");
           this.loginService.setIsAdmin(false);
           this.router.navigate(['/home']);
         }
       },
       error => {
-        console.log(error);
         this.showSnackBar("Invalid credentials!");
 
-        // Set red borders for incorrect fields
         const inputFields = document.querySelectorAll('.form-field input');
         inputFields.forEach((input) => {
           if (!input.classList.contains('invalid-field')) {

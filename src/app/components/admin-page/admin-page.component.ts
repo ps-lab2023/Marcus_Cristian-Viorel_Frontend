@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../../service/login.service";
 import {BookingService} from "../../service/booking.service";
@@ -23,10 +23,8 @@ export class AdminPageComponent {
   }
 
   exportBookingsToXML() {
-    this.bookingService.exportBookingsToXML().subscribe( (data) => {
-/*      const blob = new Blob([data], { type: 'application/xml' });
-      FileSaver.saveAs(blob, 'bookings.xml');*/
-    });
+    this.bookingService.exportBookingsToXML().subscribe( );
+
     this.showSnackBar("Export successful! Check bookings.xml file.");
     setTimeout(() => {
       this.showSnackBar("Export all bookings to an XML file.", 'black');

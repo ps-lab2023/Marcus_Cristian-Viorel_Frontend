@@ -19,27 +19,24 @@
 
 <div class="container">
   <div class="row row-cols-1 row-cols-md-2 g-4">
-<div class="card h-100">
-  <div class="card-body">
-<div class="card_stock" *ngIf="stock.name">
-  <div class="img_stock">
-    <img class="icon_stock" [src]="stock.icon" />
-  </div>
-  <div class="textBox_stock">
-    <div class="textContent_stock">
-      <div class="h1_stock">{{stock.name}}<div *ngIf="stock.increased"
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="card_stock" *ngIf="stock.name">
+          <div class="img_stock">
+            <img class="icon_stock" [src]="stock.icon" />
+          </div>
+        <div class="textBox_stock">
+          <div class="textContent_stock">
+            <div class="h1_stock">{{stock.name}}<div *ngIf="stock.increased"
                                          style="color: green ; margin: 0 10px 0 10px; float: right;">▲</div>
-        <div *ngIf="!stock.increased" style="color: red ; margin: 0 10px 0 10px; float: right;">▼</div>
+              <div *ngIf="!stock.increased" style="color: red ; margin: 0 10px 0 10px; float: right;">▼</div>
+            </div>
+          </div>
+          <div class="detail_stock">Is trading at the price of LEI{{stock.price}}</div>
+        </div>
+        </div>
       </div>
     </div>
-    <div class="detail_stock">Is trading at the price of LEI{{stock.price}}
-      <div>
-      </div>
-    </div>
-  </div>
-</div>
-  </div>
-</div>
   </div>
 </div>
 

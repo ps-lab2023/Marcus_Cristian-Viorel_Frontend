@@ -73,21 +73,12 @@
 .custom-table th, .custom-table td {
   border: 1px solid #ddd;
   padding: 8px;
-/*  white-space: nowrap;*/
-
 }
 
 .custom-table th {
   background-color: #f2f2f2;
   color: #333;
   text-align: left;
-}
-
-.warning-text {
-  color: red;
-  font-size: 14px;
-  font-weight: 600;
-  font-style: italic;
 }
 
 .box form .form-group label {

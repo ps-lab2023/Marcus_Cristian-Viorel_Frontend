@@ -1,7 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
-import {RoomService} from "../../service/room.service";
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -21,7 +20,6 @@ export class HomePageComponent {
               private loginService: LoginService) {
 
     this.username = this.loginService.getUsername();
-
     this.webSocket = new WebSocket('ws://localhost:8082/stocks');
     this.webSocket.onmessage = (event) => {
       this.stock = JSON.parse(event.data);

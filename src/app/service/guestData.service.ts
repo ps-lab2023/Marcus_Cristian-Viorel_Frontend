@@ -13,7 +13,6 @@ export class GuestDataService {
   }
 
   addGuestData(guestData: GuestData) {
-    console.log("addGuestData() in GuestDataService");
     return this.httpClient.put(this.baseUrl + '/add', guestData);
   }
 }

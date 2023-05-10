@@ -34,10 +34,12 @@ export class RegisterActivityComponent {
   }
 
   register() {
-    console.log("register() in RegisterActivityComponent");
-
     this.isInvalidChosenUsername = ValidatorService.isInvalidUsername(this.chosenUsername);
     this.isInvalidChosenPassword = ValidatorService.isInvalidPassword(this.chosenPassword);
+
+    if(this.isInvalidChosenUsername) {
+      return;
+    }
 
     let foundUser = this.getUserIdByUsername(this.chosenUsername);
     this.isInvalidChosenUsername = (foundUser != -1);
@@ -52,15 +54,11 @@ export class RegisterActivityComponent {
 
       this.userService.addUser(newUser).subscribe(
         () => {
-          console.log("User added");
           // wait for 3 secs
           this.showSnackBar("Register success! Redirecting to login...", 'green');
           setTimeout(() => {
             this.router.navigate(['/login']);
             }, 3000);
-        },
-        error => {
-          console.log("Error adding user");
         });
     }
   }

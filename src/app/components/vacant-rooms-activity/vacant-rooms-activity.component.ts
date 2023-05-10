@@ -14,8 +14,7 @@ export class VacantRoomsActivityComponent {
   // sort
   sortPriceActive: boolean = false;
 
-  constructor(private roomService: RoomService,
-              private router: Router) {
+  constructor(private roomService: RoomService) {
   }
 
   ngOnInit(sortPriceActive: boolean = false): void {

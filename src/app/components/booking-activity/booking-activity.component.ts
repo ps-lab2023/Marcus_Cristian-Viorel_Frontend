@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {Booking} from "../../model/Booking";
 import {BookingService} from "../../service/booking.service";
-import {User} from "../../model/User";
 import {LoginService} from "../../service/login.service";
 import {ValidatorService} from "../../service/validator.service";
 
@@ -36,11 +35,11 @@ export class BookingActivityComponent {
   isInvalidSelectedCheckOutDate: boolean = false;
   isInvalidSelectedTotal: boolean = false;
 
-  constructor(private bookingService: BookingService, private loginService: LoginService) {
+  constructor(private bookingService: BookingService,
+              private loginService: LoginService) {
   }
 
   ngOnInit(filterUnpaidActive: boolean = false): void {
-    console.log("ngOnInit() in BookingActivityComponent");
     this.bookingService.getBookings().subscribe(bookings => {
       this.bookings = bookings;
 
@@ -55,8 +54,6 @@ export class BookingActivityComponent {
       if(filterUnpaidActive) { // only paid bookings
         this.bookings = this.bookings.filter(booking => booking.isPaid == false);
       }
-
-      console.log("bookings.length: " + this.bookings.length);
     });
 
     // default dropdown values
@@ -69,22 +66,16 @@ export class BookingActivityComponent {
   }
 
   removeBooking(id: any) {
-    console.log("removeBooking() in BookingActivityComponent");
     this.bookingService.removeBooking(id).subscribe(
       () => {
-        console.log("Booking removed");
         this.ngOnInit();
       });
   }
 
   addBooking() {
-    console.log("addBooking() in BookingActivityComponent");
-
     this.isInvalidSelectedCheckInDate = ValidatorService.isInvalidDate(this.selectedCheckInDate);
     this.isInvalidSelectedCheckOutDate = ValidatorService.isInvalidDate(this.selectedCheckOutDate);
     this.isInvalidSelectedTotal = ValidatorService.isInvalidPrice(this.selectedTotal);
-
-    console.log("validareeee " + this.isInvalidSelectedCheckInDate + " " + this.isInvalidSelectedCheckOutDate + " " + this.isInvalidSelectedTotal);
 
     if (this.isInvalidSelectedCheckInDate || this.isInvalidSelectedCheckOutDate || this.isInvalidSelectedTotal) {
       return;
@@ -106,14 +97,11 @@ export class BookingActivityComponent {
 
     this.bookingService.addBooking(newBooking).subscribe(
       () => {
-        console.log("Booking added");
         this.ngOnInit();
       });
   }
 
   modifyBooking(id: any) {
-    console.log("modifyBooking() in BookingActivityComponent");
-
     // validation
     this.isInvalidChangedCheckInDate = ValidatorService.isInvalidDate(this.changedCheckInDate);
     this.isInvalidChangedCheckOutDate = ValidatorService.isInvalidDate(this.changedCheckOutDate);
@@ -129,7 +117,6 @@ export class BookingActivityComponent {
 
     this.bookingService.updateBooking(id, this.changedCheckInDate, this.changedCheckOutDate, this.changedTotal, this.changedIsPaid).subscribe(
         () => {
-          console.log("Booking modified");
           this.ngOnInit();
         });
   }

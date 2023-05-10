@@ -16,15 +16,15 @@ export class GraphComponent {
 
   ngOnInit() {
     this.bookingService.getBookings().subscribe(bookings => {
-      const monthlyEarnings = this.getMonthlyEarnings(bookings);
-      const yearlyEarnings = this.getYearlyEarnings(bookings);
+      const monthlyEarnings = GraphComponent.getMonthlyEarnings(bookings);
+      const yearlyEarnings = GraphComponent.getYearlyEarnings(bookings);
 
       this.createMonthlyChart(monthlyEarnings);
       this.createYearlyChart(yearlyEarnings);
     });
   }
 
-  private getMonthlyEarnings(bookings: Booking[]): Map<string, number> {
+  private static getMonthlyEarnings(bookings: Booking[]): Map<string, number> {
     const monthlyEarnings = new Map<string, number>();
 
     for (const booking of bookings) {
@@ -40,7 +40,7 @@ export class GraphComponent {
     return monthlyEarnings;
   }
 
-  private getYearlyEarnings(bookings: Booking[]): Map<string, number> {
+  private static getYearlyEarnings(bookings: Booking[]): Map<string, number> {
     const yearlyEarnings = new Map<string, number>();
 
     for (const booking of bookings) {
@@ -66,7 +66,6 @@ export class GraphComponent {
         datasets: [{
           data: data,
           label: 'Earned in USD',
-/*          backgroundColor: '#0074D9',*/
           borderWidth: 2,
           fill: true
         }]
@@ -79,21 +78,13 @@ export class GraphComponent {
             beginAtZero: true,
             ticks: {
               stepSize: 1,
-              callback: function(value, index, values) {
+              callback: function(value) {
                 return '$' + value;
               }
             }
           }
         },
         plugins: {
-/*          title: {
-            display: true,
-            text: 'Earnings in bookings by month',
-            font: {
-              size: 20,
-              weight: 'bold'
-            }
-          },*/
           legend: {
             position: 'bottom',
             labels: {
@@ -118,23 +109,13 @@ export class GraphComponent {
         datasets: [{
           data: data,
           label: 'Earned in USD',
-          /*          backgroundColor: '#0074D9',*/
           borderWidth: 2,
-          /*          fill: true*/
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          /*          title: {
-                      display: true,
-                      text: 'Earnings in bookings by year',
-                      font: {
-                        size: 20,
-                        weight: 'bold'
-                      }
-                    },*/
           legend: {
             position: 'bottom',
             labels: {

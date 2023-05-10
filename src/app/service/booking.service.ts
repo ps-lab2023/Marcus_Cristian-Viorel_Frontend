@@ -14,32 +14,26 @@ export class BookingService {
   }
 
   getBookings(): Observable<Booking[]> {
-    console.log("getBookings() in BookingService");
     return this.httpClient.get<Booking[]>(this.baseUrl + '/findAll');
   }
 
   findBookingById(selectedBookingId: any): Observable<Booking> {
-    console.log("findBookingById() in BookingService");
     return this.httpClient.get<Booking>(this.baseUrl + '/findBookingById/' + selectedBookingId);
   }
 
   removeBooking(selectedBookingId: any): Observable<any> {
-    console.log("removeBooking() in BookingService");
     return this.httpClient.delete(this.baseUrl + '/delete/' + selectedBookingId);
   }
 
   addBooking(newBooking: Booking): Observable<any> {
-    console.log("addBooking() in BookingService");
     return this.httpClient.put(this.baseUrl + '/add', newBooking);
   }
 
   updateBooking(selectedBookingId: any, changedCheckInDate: any, changedCheckOutDate: any, changedTotal: any, changedIsPaid: any) {
-    console.log("updateBooking() in BookingService");
     return this.httpClient.put<Booking>(this.baseUrl + '/update/' + selectedBookingId + '/' + changedCheckInDate + '/' + changedCheckOutDate + '/' + changedTotal + '/' + changedIsPaid, null);
   }
 
   exportBookingsToXML(): Observable<any> {
-    console.log("exportBookingsToXML() in BookingService");
     return this.httpClient.get(this.baseUrl + '/export/xml');
   }
 }
